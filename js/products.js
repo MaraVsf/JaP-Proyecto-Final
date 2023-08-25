@@ -2,7 +2,9 @@
 // Area para integracion de productos en HTML.
 
 const objeto_productos = [];
-let container = document.querySelector("#productsContainer")
+let container = document.querySelector("#productsContainer");
+let minCount = undefined; // Variable para valor minimo de precio
+let maxCount = undefined; // Variable para valor maximo de precio
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -44,4 +46,43 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (err) {
         console.error(err);
     }
+});
+
+// Falta hacer que se muestre la lista de los productos según rango de precio al filtrar por rango de precio y al limpiar (crear función para eso)
+document.addEventListener("DOMContentLoaded", function(e){
+
+    // Función de Filtrar por rango de precio
+    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+        minCount = document.getElementById("rangeFilterCountMin").value;
+        maxCount = document.getElementById("rangeFilterCountMax").value;
+
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+            minCount = parseInt(minCount);
+        }
+        else{
+            minCount = undefined;
+        }
+
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+            maxCount = parseInt(maxCount);
+        }
+        else{
+            maxCount = undefined;
+        }
+
+        //Mostrar los productos con el filtro, Ej: showProductsList();
     });
+
+    // Función de Limpiar los filtros
+    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+        document.getElementById("rangeFilterCountMin").value = "";
+        document.getElementById("rangeFilterCountMax").value = "";
+
+        minCount = undefined;
+        maxCount = undefined;
+        
+        //Ej: showProductsList();
+    });
+
+    
+});
