@@ -8,10 +8,17 @@ let maxCount = undefined; // Variable para valor maximo de precio
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        let endpoint = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+        let catID = localStorage.getItem("catID");
+        catID = parseInt(catID);
+
+        let endpoint = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
         const res = await fetch(endpoint);
         const data = await res.json();
         const objeto_productos = data;
+
+        let catName = data.catName;
+        let catArticulos = document.querySelector(".lead");
+        catArticulos.innerHTML = `Verás aquí todos los productos de la categoría ${catName}`
 
         let tarjeta = '';
 
