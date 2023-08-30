@@ -21,6 +21,49 @@ nav {
   margin-bottom: 15px;
 
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+/* Estilos del botón del menú */
+.dropbtn {
+  background-color: #53C0FB;
+  color: white;
+  padding: 10px;
+  padding-right: 20px;
+  border:"none";
+  border-radius:5px ;
+  cursor: pointer;
+}
+
+/* Estilos del contenido desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #53C0FB;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Estilos de los enlaces dentro del contenido desplegable */
+.dropdown-content a {
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  color: #006d77;
+  font-weight: 600;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.dropdown-content a:hover {
+  color:#03045e;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 .logo {
   color: #fb8500;
