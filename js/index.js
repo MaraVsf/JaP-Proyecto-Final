@@ -24,12 +24,14 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-    const botonuser=document.getElementById("logoutDropdown")
-    let username=localStorage.getItem("username");
-    let imagenuser=document.createElement("img");
-    imagenuser.src ='/img/img-iconos/logoPerfil.png';
-    imagenuser.style.width = "30px";
-    botonuser.innerHTML='';
-    botonuser.appendChild(imagenuser);
-    botonuser.appendChild(document.createTextNode(username));
+   
 });
+
+const botonuser=document.getElementById("logoutDropdown")
+let username=localStorage.getItem("username");
+let imagenuser=document.createElement("img");
+imagenuser.src ='img/img-iconos/logoPerfil.png';
+imagenuser.style.width = "30px";
+botonuser.innerHTML='';
+botonuser.appendChild(imagenuser);
+botonuser.appendChild(document.createTextNode(username));
