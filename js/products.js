@@ -6,6 +6,8 @@ let container = document.querySelector("#productsContainer");
 let minCount = undefined; // Variable para valor minimo de precio
 let maxCount = undefined; // Variable para valor maximo de precio
 let tarjeta = '';
+let valorBusqueda;
+let botonBusqueda = document.querySelector('#search-button')
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -157,6 +159,37 @@ function filtrarPorRangoDePrecio(){
     showProducts(objetosFiltrados);
 
 };
+
+function barrraDeBusqueda() {
+    container.innerHTML = "";
+    tarjeta = "";
+
+    valorBusqueda = valorBusqueda.toLowerCase();
+
+    objeto_productos.forEach(producto => {
+        const productName = producto.name.toLowerCase();
+        const productDescription = producto.description.toLowerCase();
+
+        if (productName.includes(valorBusqueda) || productDescription.includes(valorBusqueda)) {
+            createCard(producto);
+        }
+    });
+
+    addProduct();
+}
+
+botonBusqueda.addEventListener('click', () => {
+    valorBusqueda = document.querySelector('#search').value;
+    barrraDeBusqueda()
+})
+
+document.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      valorBusqueda = document.querySelector('#search').value;
+      barrraDeBusqueda()
+    }
+  });
 
 function cleanFilter(){
     container.innerHTML = "";
