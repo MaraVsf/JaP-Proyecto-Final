@@ -21,12 +21,51 @@ document.addEventListener("DOMContentLoaded", async () => {
         let catArticulos = document.querySelector(".lead");
         catArticulos.innerHTML = `Verás aquí todos los productos de la categoría ${catName}`
 
-        showProducts(objeto_productos);
-    
+        
+    showProducts(objeto_productos);
+
     } catch (err) {
         console.error(err);
     }
 });
+
+
+let btnAsc = document.getElementById("ordenAsc");
+let btnDesc = document.getElementById("ordenDesc");
+let btnRelv = document.getElementById("ordenRelv");
+
+
+btnAsc.addEventListener('click', e => {
+    ordenarProductos('shortAsc');
+});
+btnDesc.addEventListener('click', e => {
+    ordenarProductos('shortDesc');
+});
+btnRelv.addEventListener('click', e => {
+    ordenarProductos('shortRelv');
+});
+
+function ordenarProductos(sortType) {
+    let objetosFiltrados = [];
+    container.innerHTML = "";
+    tarjeta = "";
+
+    if (sortType == 'shortAsc') {
+        objeto_productos.sort((a, b) => a.cost - b.cost);
+        objetosFiltrados = objeto_productos;
+
+    } else if (sortType == 'shortDesc') {
+        objeto_productos.sort((a, b) => b.cost - a.cost);
+        objetosFiltrados = objeto_productos;
+    } else if (sortType == 'shortRelv') {
+        objeto_productos.sort((a, b) => b.soldCount - a.soldCount);
+        objetosFiltrados = objeto_productos;
+    } 
+
+    showProducts(objetosFiltrados);
+};
+
+
 
 // Falta hacer que se muestre la lista de los productos según rango de precio al filtrar por rango de precio y al limpiar (crear función para eso)
 document.addEventListener("DOMContentLoaded", function(e){
@@ -83,6 +122,7 @@ function addProduct(){
 };
 
 function showProducts(objetos){
+    container.innerHTML = "";    
     for (let producto of objetos) {
         createCard(producto);
     };
