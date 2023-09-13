@@ -31,6 +31,11 @@ function showInfoProducts(productData) {
     <img src="${productData.images[3]}" alt="${productData.name}"  width="500px" height="300px">
     
     <div class="container">
+    
+    <div>
+    COMENTARIOS
+    </div>
+
     <h4>Tu comentario</h4>
     <label for="cuadrocom">Tu opinión</label><br> 
     <textarea placeholder="Escriba aquí su comentario..." style="height: 100px; width: 400px;"></textarea><br>
