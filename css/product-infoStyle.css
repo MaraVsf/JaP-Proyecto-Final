@@ -1,0 +1,70 @@
+/* Texto caracteristicas */
+.caractproducto h2 {
+   font-size: 2.5em;
+   font-weight: 600;
+   margin: 30px 0 10px 0;
+}
+
+#precio {
+    margin: 100px 0 30px 0;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+/* Imagenes */
+.caractproducto {
+    float: right;
+}
+
+.product-container {
+    display: flex;
+    float: left;
+}
+
+.principal-image {
+    flex-grow: 1;
+    width: auto;
+    padding: 20px;
+    margin-left: -10px;
+}
+
+.miniatura-images {
+    
+    padding: 20px;
+}
+
+.miniatura {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd; /* Borde para resaltar cuando se selecciona */
+}
+
+.miniatura:hover {
+    border: 1px solid #333; /* Cambia el borde al pasar el mouse */
+}
+
+
+hr {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Comentarios */
+.comentarioscontainer {
+    padding-top: 440px;
+    
+}
+
+#comentarios {
+    float: left;
+}
+
+.tucomentario {
+    float: right;
+}
+
+#puntos {
+    width: 60px;
+}
