@@ -73,8 +73,9 @@ function agregarComentario() {
   `;
 
   document.getElementById("comentarios").innerHTML += nuevoComentario;
-
-  document.getElementById("comment").reset();
+  
+  document.getElementById("comment").value="";
+  document.getElementById("puntos").value="";
 }
 
 function generarEstrellas(puntuacion) {
