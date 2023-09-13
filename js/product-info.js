@@ -38,13 +38,13 @@ function showInfoProducts(productData) {
     
     <div class="container">
     
-    <div>
+    <div id="comentarios" class="mt-4">
     COMENTARIOS
     </div>
 
     <h4>Tu comentario</h4>
     <label for="cuadrocom">Tu opinión</label><br> 
-    <textarea placeholder="Escriba aquí su comentario..." style="height: 100px; width: 400px;"></textarea><br>
+    <textarea placeholder="Escriba aquí su comentario..." style="height: 100px; width: 400px;" id="comment"></textarea><br>
     <label for="puntos">Tu puntuación</label><br>
     <select id="puntos" class="custom-select" style="margin-bottom:20px;">
       <option value="1">1</option>
@@ -53,8 +53,43 @@ function showInfoProducts(productData) {
       <option value="4">4</option>
       <option value="5">5</option>
     </select><br>
-    <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
+    <button class="btn btn-primary" id="botonEnv" onclick="agregarComentario()" style=>Enviar</button>
     </div>
     `;
   container.innerHTML = productInfoHTML;
+}
+
+function agregarComentario() {
+  let comentar = document.getElementById("comment").value;
+  let puntaje = parseInt(document.getElementById("puntos").value);
+
+  let estrellasHTML = generarEstrellas(puntaje);
+
+  let nuevoComentario = `
+      <div class="comentario">
+          <p class="puntuacion">${estrellasHTML}</p>
+          <p class="comentario-texto">${comentar}</p>
+      </div>
+  `;
+
+  document.getElementById("comentarios").innerHTML += nuevoComentario;
+
+  document.getElementById("comment").reset();
+}
+
+function generarEstrellas(puntuacion) {
+  let estrellaLlena = "<img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'>";
+  let estrellaVacia = "<img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>";
+  
+  let estrellasHTML = "";
+  
+  for (let i = 0; i < 5; i++) {
+      if (i < puntuacion) {
+          estrellasHTML += estrellaLlena;
+      } else {
+          estrellasHTML += estrellaVacia;
+      }
+  }
+  
+  return estrellasHTML;
 }
