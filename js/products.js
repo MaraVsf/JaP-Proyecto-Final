@@ -99,7 +99,7 @@ function createCard(producto) {
                 </p>    
             </div>    
                 <div class="priceAmount d-flex justify-content-between align-items-center">
-                    <p class="priceCar">USD ${producto.cost}</p>
+                    <p class="priceCar">${producto.currency} ${producto.cost}</p>
                     <p class="amountCar ms-auto me-0">${producto.soldCount}</p>
                 </div>
         </div>

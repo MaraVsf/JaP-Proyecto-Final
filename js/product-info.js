@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
     showInfoProducts(productData);
     console.log(productData);
+
+    let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
+    const comentRes = await fetch(comentEndpoint);
+    const comentData = await comentRes.json();
+    console.log(comentData)
+
   } catch (err) {
     console.error(err);
   }
