@@ -22,14 +22,14 @@ function showInfoProducts(productData){
 
     let productInfoHTML = `
     <h2>${productData.name}</h2>
-    <p>Precio: USD ${productData.cost}</p>
-    <p>${productData.description}</p>
-    <p>Categoria: ${productData.category}</p>
-    <p>Cantidad de vendidos: ${productData.soldCount}</p>
-    <img src="${productData.images[0]}" alt="${productData.name}">
-    <img src="${productData.images[1]}" alt="${productData.name}">
-    <img src="${productData.images[2]}" alt="${productData.name}">
-    <img src="${productData.images[3]}" alt="${productData.name}">
+    <p> <b>Precio:</b> USD ${productData.cost}</p>
+    <p> <b>Descripción:</b> ${productData.description}</p>
+    <p> <b>Categoria:</b> ${productData.category}</p>
+    <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
+    <img src="${productData.images[0]}" alt="${productData.name}"  width="500px" height="300px">
+    <img src="${productData.images[1]}" alt="${productData.name}"  width="500px" height="300px">
+    <img src="${productData.images[2]}" alt="${productData.name}"  width="500px" height="300px">
+    <img src="${productData.images[3]}" alt="${productData.name}"  width="500px" height="300px">
     `
     container.innerHTML = productInfoHTML ;
 }
