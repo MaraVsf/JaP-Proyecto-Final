@@ -1,4 +1,4 @@
-/* Texto caracteristicas */
+/* Texto info del producto */
 .caractproducto h2 {
    font-size: 2.5em;
    font-weight: 600;
@@ -7,30 +7,44 @@
 
 #precio {
     margin: 100px 0 30px 0;
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: 600;
+    color: white;
+    background-color: black;
+    padding: 4px 13px;
+    width: 45%;
+    border-radius: 10px;
 }
 
-/* Imagenes */
+/* Info del producto con su imagenes */
+.product-container {
+    background-color: white;
+}
+
 .caractproducto {
     float: right;
 }
 
-.product-container {
+
+.product-images {
     display: flex;
     float: left;
 }
 
 .principal-image {
     flex-grow: 1;
-    width: auto;
     padding: 20px;
     margin-left: -10px;
+    
+}
+
+#main-image {
+    width: 600px;
 }
 
 .miniatura-images {
-    
-    padding: 20px;
+    margin: 20px 0 0 10px;
+    padding: 10px;
 }
 
 .miniatura {
@@ -38,22 +52,22 @@
     height: auto;
     margin-bottom: 10px;
     cursor: pointer;
-    border: 1px solid #ddd; /* Borde para resaltar cuando se selecciona */
+    border: 1px solid #ddd;
 }
 
 .miniatura:hover {
-    border: 1px solid #333; /* Cambia el borde al pasar el mouse */
+    border: 1px solid #333;
 }
 
-
+/* Separacion */
 hr {
     display: flex;
     justify-content: flex-end;
 }
 
 /* Comentarios */
-.comentarioscontainer {
-    padding-top: 440px;
+.comentarios-container {
+    padding-top: 70px;
     
 }
 
@@ -65,6 +79,22 @@ hr {
     float: right;
 }
 
+
 #puntos {
-    width: 60px;
+    border: none;
+}
+
+
+.star-rating {
+    font-size: 0; /* Elimina el espacio entre los elementos inline */
+}
+
+.star {
+    font-size: 24px; /* Tamaño de las estrellas */
+    color: gray; /* Color de las estrellas no seleccionadas */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.star.active {
+    color: gold; /* Color de las estrellas seleccionadas */
 }

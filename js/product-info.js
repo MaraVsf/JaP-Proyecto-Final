@@ -33,49 +33,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  const stars = document.querySelectorAll('.star');
+  const ratingInput = document.getElementById('rating');
+
+  let selectedRating = 0;
+
+  stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+          selectedRating = index + 1; // Suma 1 para obtener la puntuación real
+
+          // Marca como activa todas las estrellas hasta la que se hizo clic
+          for (let i = 0; i <= index; i++) {
+              stars[i].classList.add('active');
+          }
+
+          // Desmarca las estrellas después de la que se hizo clic
+          for (let i = index + 1; i < stars.length; i++) {
+              stars[i].classList.remove('active');
+          }
+
+          // Actualiza el valor del campo de entrada oculto
+          ratingInput.value = selectedRating;
+      });
+  });
+
 });
+
 
 function showInfoProducts(productData) {
   let container = document.getElementById("container");
 
   let productInfoHTML = `
-    <div class="container">
-      <div class="row col-6 product-container">
-        <div class="principal-image">
-          <img src="${productData.images[0]}" alt="${productData.name}" id="main-image" width="500px" height="300px" >
+    <div class="row product-container">
+      <div class="col-7 product-images">
+        <div class="miniatura-images">
+          <img src="${productData.images[0]}" alt="${productData.name}" class="miniatura">
+          <img src="${productData.images[1]}" alt="${productData.name}" class="miniatura">
+          <img src="${productData.images[2]}" alt="${productData.name}" class="miniatura">
+          <img src="${productData.images[3]}" alt="${productData.name}" class="miniatura">
         </div>
-        <div class="miniautura-images"
-          <img src="${productData.images[0]}" alt="${productData.name}" class="miniatura" width="500px" height="300px" >
-          <img src="${productData.images[1]}" alt="${productData.name}" class="miniatura" width="500px" height="300px">
-          <img src="${productData.images[2]}" alt="${productData.name}" class="miniatura" width="500px" height="300px">
-          <img src="${productData.images[3]}" alt="${productData.name}" class="miniatura" width="500px" height="300px">
+        <div class="principal-image">
+          <img src="${productData.images[0]}" alt="${productData.name}" id="main-image">
         </div>
       </div>
-      <div class="row col-6 caractproducto">
+
+      <div class="col-5 caractproducto">
         <h2>${productData.name}</h2>
         <p>${productData.description}</p>
         <p id="precio">USD ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
       </div>
-    </div>  
+    </div>
 
-    <div class="container comentarioscontainer">
+    <div class="row comentarios-container">
       <hr>
-      <div id="comentarios" class="mt-4 row col-6">
+      <div id="comentarios" class="mt-4 col-6">
         COMENTARIOS
       </div>
       
-      <div class="row col-6 tucomentario">
+      <div class="col-6 tucomentario">
         <h4>Agrega un comentario</h4>
         <label for="puntos">Tu puntuación<br>
-          <select id="puntos" class="custom-select" style="margin-bottom:20px;">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+          <div id="puntos" class="custom-select star-rating" style="margin-bottom:20px;">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>      
           </select>
         </label><br>
         <label for="cuadrocom">Tu opinión<br>
@@ -92,7 +118,7 @@ function agregarComentario() {
   let comentar = document.getElementById("comment").value;
   let puntaje = parseInt(document.getElementById("puntos").value);
 
-  let estrellasHTML = generarEstrellas(puntaje);
+  let estrellasHTML = ratingInput;
 
   let nuevoComentario = `
       <div class="comentario">
@@ -123,5 +149,3 @@ function generarEstrellas(puntuacion) {
   
   return estrellasHTML;
 }
-
-
