@@ -6,7 +6,8 @@
 }
 
 #precio {
-    margin: 100px 0 30px 0;
+    margin-top: 14%;
+    margin-bottom: 30px;
     font-size: 1.5em;
     font-weight: 600;
     color: white;
@@ -29,28 +30,31 @@
 .product-images {
     display: flex;
     float: left;
+    margin-top: 30px;
 }
 
 .principal-image {
+    float: right;
     flex-grow: 1;
-    padding: 20px;
-    margin-left: -10px;
-    
+    padding: 0.6%;
+    margin-left: -1%;
 }
 
 #main-image {
-    width: 600px;
+    width: 100%;
 }
 
 .miniatura-images {
-    margin: 20px 0 0 10px;
-    padding: 10px;
+    float: left;
+    margin-left: 10%;
+    padding: 1% 2% 1% 1%;
+    width: 21%;
 }
 
 .miniatura {
-    width: 100px;
+    width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 10%;
     cursor: pointer;
     border: 1px solid #ddd;
 }
@@ -59,16 +63,33 @@
     border: 1px solid #333;
 }
 
-/* Separacion */
+/* Separacion ---------------------------------------*/
 hr {
     display: flex;
     justify-content: flex-end;
 }
 
 /* Comentarios */
+h4 {
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.tucomentario{
+    color: white;
+    background-color: #0f0f0f;
+    padding: 40px;
+    border-radius: 3px;
+}
 .comentarios-container {
     padding-top: 70px;
     
+}
+
+label{
+    color: rgb(147, 197, 255);
+    text-align: left;
 }
 
 #comentarios {
@@ -79,11 +100,12 @@ hr {
     float: right;
 }
 
-
-#puntos {
-    border: none;
+#comment{
+    background-color: #333;
+    border-color: #00000048;
+    border-radius: 5px;
+    padding: 5px 9px;
 }
-
 
 .star-rating {
     font-size: 0; /* Elimina el espacio entre los elementos inline */
@@ -97,4 +119,26 @@ hr {
 
 .star.active {
     color: gold; /* Color de las estrellas seleccionadas */
+}
+
+@media only screen and (max-width: 1199px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    .product-images {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .caractproducto {
+        margin-left: 10%;
+        float: none;
+        width: 100%;
+    }
+    
+    #precio {
+        margin-top: 3%;
+    }
 }

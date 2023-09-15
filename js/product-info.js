@@ -88,13 +88,13 @@ function showInfoProducts(productData) {
 
     <div class="row comentarios-container">
       <hr>
-      <div id="comentarios" class="mt-4 col-6">
+      <div id="comentarios" class="mt-4 col-7">
         COMENTARIOS
       </div>
       
-      <div class="col-6 tucomentario">
+      <div class="col-5 tucomentario">
         <h4>Agrega un comentario</h4>
-        <label for="puntos">Tu puntuación<br>
+        <label for="puntos">Puntuación<br>
           <div id="puntos" class="custom-select star-rating" style="margin-bottom:20px;">
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
@@ -104,7 +104,7 @@ function showInfoProducts(productData) {
           </div>      
           </select>
         </label><br>
-        <label for="cuadrocom">Tu opinión<br>
+        <label for="cuadrocom">Opinión<br>
           <textarea placeholder="Escriba aquí su comentario..." style="height: 100px; width: 400px;" id="comment"></textarea><br>
         </label><br> 
         <button class="btn btn-primary" id="botonEnv" onclick="agregarComentario()" style=>Enviar</button>
