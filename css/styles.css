@@ -6,6 +6,8 @@
 }
 
 
+
+
 /* Estilo del nav */
 nav {
   display: flex;
@@ -15,11 +17,13 @@ nav {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
-  background-color: #caf0f8;
+  background-color: #caf0f87c;
   box-shadow: 0px 1px 10px black;
   height: 70px;
-  margin-bottom: 15px;
-
+  position: absolute;
+  min-width: 100%;
+  top:0;
+  z-index: 3;
 }
 .dropdown {
   position: relative;
@@ -106,7 +110,7 @@ color: #03045e;
 
 .card:hover {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4) !important;
-  transform: translateY(-3%); /* para que tenga un efecto de movimiento hacia el eje Y un '3%' */
+  transform: translateY(-1%); /* para que tenga un efecto de movimiento hacia el eje Y un '3%' */
 }
 
 #container {
@@ -134,8 +138,7 @@ color: #03045e;
     font-size: 3.5rem;
   }
 }
-
-.jumbotron {
+/*.jumbotron {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
@@ -146,6 +149,67 @@ color: #03045e;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+}*/
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.categorias {
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+.container-tarjetas {
+  display: flex;
+  max-width: 100%;
+  overflow-y: scroll;
+  }
+
+.tarjetas {
+  min-width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-tarjetas {
+  width: 100%;
+  margin-top: -250px;
+  
+}
+
+.flechas {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.flecha {
+  width: 60px;
+  height: 100px;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+
+.flecha div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.texto-descripcion a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px
+  
 }
 
 @media (min-width: 768px) {
@@ -387,3 +451,29 @@ box-shadow: 0 8px 16px rgb(0, 0, 0, 0.1);
 {
   filter: invert();
 }
+
+.contenedor-auto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-left: 15px;
+  width: 865px;
+  
+}
+
+.contenedor-imagen img{
+    width: 160px;
+    height: 150px;
+}
+
+.informacion-producto {
+  display:flex;
+  align-items: center;
+  justify-content:  space-around;
+}
+
+.informacion-producto p{
+  padding-right: 0;
+  font-size: 25px;
+} 
