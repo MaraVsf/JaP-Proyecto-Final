@@ -176,8 +176,12 @@ const nuevoComentario = `
           </div>
       `;
 
+
       document.getElementById("comentarios").innerHTML += nuevoComentario;
 
 
 
+
+
+      document.getElementById("comentarios").innerHTML += nuevoComentario;
 

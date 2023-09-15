@@ -175,6 +175,7 @@ botonBusqueda.addEventListener("click", () => {
   barrraDeBusqueda();
 });
 
+
 document.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -210,3 +211,30 @@ let ancho = window.innerWidth;
     }
 }
    
+
+
+document.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    valorBusqueda = document.querySelector("#search").value;
+    barrraDeBusqueda();
+  }
+});
+
+function cleanFilter() {
+  container.innerHTML = "";
+  tarjeta = "";
+
+  for (let producto of objeto_productos) {
+    createCard(producto);
+  }
+
+  addProduct();
+}
+
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
+
+
