@@ -15,6 +15,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/product-infoStyle.css" rel="stylesheet">
      <!-- nuevas fuentes de google fonts para el nav-->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,12 +53,41 @@
         </div>
       </div>
     </nav>
-    <main>
+
+    <div class="container">
+      <main>
       
       <div id="container">
       </div>
+      <div class="row comentarios-container">
+        <hr>
+        <div id="comentarios" class="mt-4 col-7">
+          <h4>COMENTARIOS</h4>
+          <div class="comentario">
+            <p class="puntuacion"><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'>
+              <span class="fecha"> 10 de setiembre de 2023</span></p>
+            <p class="comentario-texto">Precioso, a mi nena le encantó</p>
+            <p class="usuario"><b>-silvia_fagundez</b></p>
+          </div>
+          <div class="comentario">
+            <p class="puntuacion"><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>
+              <span class="fecha"> 10 de setiembre de 2023</span></p>
+            <p class="comentario-texto">Esperaba que fuera más grande, pero es muy lindo.</p>
+            <p class="usuario"><b>-majo_sanchez</b></p>
+          </div>
+          <div class="comentario">
+            <p class="puntuacion"><img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'><img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'><img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'><img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'><img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>
+              <span class="fecha"> 10 de setiembre de 2023</span></p>
+            <p class="comentario-texto">Me da miedo esta página siento que no confiable</p>
+            <p class="usuario"><b>-flynn_rider</b></p>
+          </div>
+        </div>
+        <div class="col-5 tucomentario" id="tucomentario">
+        </div>
+      </div>
       
-    </main>
+      </main>
+    </div>
     <footer class="text-muted">
       <div class="container">
         <p class="float-end">
@@ -71,6 +101,7 @@
         </p>
       </div>
     </footer>
+    </div>
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>
