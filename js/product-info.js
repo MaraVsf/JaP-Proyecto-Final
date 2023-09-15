@@ -33,35 +33,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  const stars = document.querySelectorAll('.star');
-  const ratingInput = document.getElementById('rating');
-
-  let selectedRating = 0;
+  // Obtén una lista de todas las estrellas
+  let stars = document.querySelectorAll('.star');
+  let ratingInput = document.getElementById('rating');
+  let botonEnv = document.getElementById('botonEnv');
 
   stars.forEach((star, index) => {
-      star.addEventListener('click', () => {
-          selectedRating = index + 1; // Suma 1 para obtener la puntuación real
+    star.addEventListener('click', () => {
+        const clickedIndex = parseInt(star.getAttribute('data-index'));
+        let selectedRating = clickedIndex + 1; // Almacena la puntuación en una variable
 
-          // Marca como activa todas las estrellas hasta la que se hizo clic
-          for (let i = 0; i <= index; i++) {
-              stars[i].classList.add('active');
-          }
+        // Marca como activa todas las estrellas hasta la que se hizo clic
+        for (let i = 0; i <= clickedIndex; i++) {
+            stars[i].classList.add('active');
+        }
 
-          // Desmarca las estrellas después de la que se hizo clic
-          for (let i = index + 1; i < stars.length; i++) {
-              stars[i].classList.remove('active');
-          }
+        // Desmarca las estrellas después de la que se hizo clic
+        for (let i = clickedIndex + 1; i < stars.length; i++) {
+            stars[i].classList.remove('active');
+        }
 
-          // Actualiza el valor del campo de entrada oculto
-          ratingInput.value = selectedRating;
-      });
+        // Almacena la puntuación en el campo oculto
+        ratingInput.value = selectedRating;
+    });
   });
+
+  botonEnv.addEventListener('click', () => {
+    agregarComentario();
+  })
 
 });
 
 
 function showInfoProducts(productData) {
   let container = document.getElementById("container");
+  let tucomentario = document.getElementById("tucomentario");
 
   let productInfoHTML = `
     <div class="row product-container">
@@ -84,63 +90,74 @@ function showInfoProducts(productData) {
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
       </div>
-    </div>
+    </div>`
 
-    <div class="row comentarios-container">
-      <hr>
-      <div id="comentarios" class="mt-4 col-7">
-        COMENTARIOS
-      </div>
-      
-      <div class="col-5 tucomentario">
-        <h4>Agrega un comentario</h4>
-        <label for="puntos">Puntuación<br>
-          <div id="puntos" class="custom-select star-rating" style="margin-bottom:20px;">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-          </div>      
-          </select>
+    let tucomentarioHTML =
+        `<h4>Agrega un comentario</h4>
+        <label for="estrellas">Toca una estrella para calificar
+          <div id="puntos" class="custom-select star-rating">
+            <input type="hidden" id="rating" value="0">
+            <span class="star" data-index="0">&#9733;</span>
+            <span class="star" data-index="1">&#9733;</span>
+            <span class="star" data-index="2">&#9733;</span>
+            <span class="star" data-index="3">&#9733;</span>
+            <span class="star" data-index="4">&#9733;</span>
+          </div>
         </label><br>
-        <label for="cuadrocom">Opinión<br>
-          <textarea placeholder="Escriba aquí su comentario..." style="height: 100px; width: 400px;" id="comment"></textarea><br>
+        <label for="cuadrocom">
+          <textarea placeholder="Escriba aquí su comentario..." id="comment-nuevo"></textarea><br>
         </label><br> 
-        <button class="btn btn-primary" id="botonEnv" onclick="agregarComentario()" style=>Enviar</button>
-      </div>
-    </div>
+        <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
     `;
   container.innerHTML = productInfoHTML;
+  tucomentario.innerHTML = tucomentarioHTML;
 }
 
 function agregarComentario() {
-  let comentar = document.getElementById("comment").value;
-  let puntaje = parseInt(document.getElementById("puntos").value);
+  let comentar = document.getElementById("comment-nuevo").value;
+  let puntaje = parseInt(document.getElementById("rating").value); // Obtén la puntuación del campo oculto
+  let usuario = username; // Reemplaza esto con el nombre de usuario real
+  let fecha = obtenerFechaActual(); // Obtén la fecha actual
+  let stars = document.querySelectorAll('.star');
 
-  let estrellasHTML = ratingInput;
+  if (puntaje > 0 && puntaje <= 5) {
+      let estrellasHTML = generarEstrellas(puntaje);
 
-  let nuevoComentario = `
-      <div class="comentario">
-          <p class="puntuacion">${estrellasHTML}</p>
-          <p class="comentario-texto">${comentar}</p>
-      </div>
-  `;
+      const nuevoComentario = `
+          <div class="comentario">
+              <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
+              <p class="comentario-texto">${comentar}</p>
+              <p class="usuario"><b>-${usuario}</b></p>
+          </div>
+      `;
 
-  document.getElementById("comentarios").innerHTML += nuevoComentario;
-  
-  document.getElementById("comment").value="";
-  document.getElementById("puntos").value="";
+      document.getElementById("comentarios").innerHTML += nuevoComentario;
+      console.log(stars);
+      // Restaura la selección de estrellas y el campo de comentario
+      stars.forEach(star => star.classList.remove('active'));
+      document.getElementById("comment-nuevo").value = "";
+      document.getElementById("rating").value = "0";
+  } else {
+      alert("Por favor, selecciona una puntuación válida.");
+  }
 }
 
-function generarEstrellas(puntuacion) {
+function obtenerFechaActual() {
+  const fecha = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return fecha.toLocaleDateString('es-ES', options);
+}
+
+
+
+function generarEstrellas(puntaje) {
   let estrellaLlena = "<img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'>";
   let estrellaVacia = "<img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>";
   
   let estrellasHTML = "";
   
   for (let i = 0; i < 5; i++) {
-      if (i < puntuacion) {
+      if (i < puntaje) {
           estrellasHTML += estrellaLlena;
       } else {
           estrellasHTML += estrellaVacia;
@@ -149,3 +166,14 @@ function generarEstrellas(puntuacion) {
   
   return estrellasHTML;
 }
+
+
+const nuevoComentario = `
+          <div class="comentario">
+              <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
+              <p class="comentario-texto">${comentar}</p>
+              <p class="usuario"><b>-${usuario}</b></p>
+          </div>
+      `;
+
+      document.getElementById("comentarios").innerHTML += nuevoComentario;
