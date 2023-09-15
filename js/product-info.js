@@ -86,7 +86,7 @@ function showInfoProducts(productData) {
       <div class="col-5 caractproducto">
         <h2>${productData.name}</h2>
         <p>${productData.description}</p>
-        <p id="precio">USD ${productData.cost}</p>
+        <p id="precio">UYU ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
       </div>
