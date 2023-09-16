@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productData = await res.json();
 
     //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
-    showInfoProducts(productData);
+    showInfoProducts(productData, comentData);
     console.log(productData);
 
     let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
     const comentRes = await fetch(comentEndpoint);
     const comentData = await comentRes.json();
-    console.log(comentData)
+    console.log(comentData);
 
   } catch (err) {
     console.error(err);
@@ -65,8 +65,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-function showInfoProducts(productData) {
+function showInfoProducts(productData, comentData) {
   let container = document.getElementById("container");
+  let comentarios = document.getElementById("comentarios");
   let tucomentario = document.getElementById("tucomentario");
 
   let productInfoHTML = `
@@ -92,6 +93,29 @@ function showInfoProducts(productData) {
       </div>
     </div>`
 
+    let comentariosHTML =
+        `<h4>COMENTARIOS</h4>
+        <div class="comentario">
+              <p class="puntuacion">${comentData[0].score}<span class="fecha"> ${comentData[0].dateTime}</span></p>
+              <p class="comentario-texto">${comentData[0].description}</p>
+              <p class="usuario"><b>-${comentData[0].user}</b></p>
+        </div>
+        <div class="comentario">
+              <p class="puntuacion">${comentData[1].score}<span class="fecha"> ${comentData[1].dateTime}</span></p>
+              <p class="comentario-texto">${comentData[1].description}</p>
+              <p class="usuario"><b>-${comentData[1].user}</b></p>
+        </div>
+        <div class="comentario">
+              <p class="puntuacion">${comentData[2].score}<span class="fecha"> ${comentData[2].dateTime}</span></p>
+              <p class="comentario-texto">${comentData[2].description}</p>
+              <p class="usuario"><b>-${comentData[2].user}</b></p>
+        </div>
+        <div class="comentario">
+              <p class="puntuacion">${comentData[3].score}<span class="fecha"> ${comentData[3].dateTime}</span></p>
+              <p class="comentario-texto">${comentData[3].description}</p>
+              <p class="usuario"><b>-${comentData[3].user}</b></p>
+        </div>`
+
     let tucomentarioHTML =
         `<h4>Agrega un comentario</h4>
         <label for="estrellas">Toca una estrella para calificar
@@ -110,6 +134,7 @@ function showInfoProducts(productData) {
         <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
     `;
   container.innerHTML = productInfoHTML;
+  comentarios.innerHTML = comentariosHTML;
   tucomentario.innerHTML = tucomentarioHTML;
 }
 
@@ -166,14 +191,3 @@ function generarEstrellas(puntaje) {
   
   return estrellasHTML;
 }
-
-
-const nuevoComentario = `
-          <div class="comentario">
-              <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
-              <p class="comentario-texto">${comentar}</p>
-              <p class="usuario"><b>-${usuario}</b></p>
-          </div>
-      `;
-
-      document.getElementById("comentarios").innerHTML += nuevoComentario;
