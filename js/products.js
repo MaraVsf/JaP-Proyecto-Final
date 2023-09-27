@@ -175,7 +175,6 @@ botonBusqueda.addEventListener("click", () => {
   barrraDeBusqueda();
 });
 
-
 document.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -199,19 +198,22 @@ function setProdID(id) {
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
-
 
 function moverCarrousel(direction) {
-let container = document.querySelector(".container-tarjetas");
-let ancho = window.innerWidth;
-    if(direction == "left" ){
-        container.scrollTo({ left: (container.scrollLeft - ancho), behavior: 'smooth' });
-    }else if(direction == "right"){
-        container.scrollTo({ left: (container.scrollLeft + ancho), behavior: 'smooth' });
-    }
+  let container = document.querySelector(".container-tarjetas");
+  let ancho = window.innerWidth;
+  if (direction == "left") {
+    container.scrollTo({
+      left: container.scrollLeft - ancho,
+      behavior: "smooth",
+    });
+  } else if (direction == "right") {
+    container.scrollTo({
+      left: container.scrollLeft + ancho,
+      behavior: "smooth",
+    });
+  }
 }
-   
-
 
 document.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -233,8 +235,7 @@ function cleanFilter() {
 }
 
 function setProdID(id) {
+  localStorage.removeItem("prodID");
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
-
-

@@ -44,6 +44,7 @@ nav {
 /* Contenido desplegable */
 .dropdown-content {
   display: none;
+  flex-direction: column;
   position: absolute;
   background-color: #53c0fb;
   min-width: 160px;
