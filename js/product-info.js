@@ -21,11 +21,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error(err);
   }
 
-  // Obtén una lista de todas las miniaturas
+  // Miniatura a Imagen principal
   const miniaturas = document.querySelectorAll('.miniatura');
   const mainImage = document.getElementById('main-image');
   
-  // Agrega un controlador de eventos a cada miniatura
   miniaturas.forEach(miniatura => {
     miniatura.addEventListener('click', () => {
       mainImage.src = miniatura.src;
@@ -33,28 +32,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // Obtén una lista de todas las estrellas
+  // Calificar con Estrellas
   let stars = document.querySelectorAll('.star');
   let ratingInput = document.getElementById('rating');
   let botonEnv = document.getElementById('botonEnv');
 
   stars.forEach((star, index) => {
     star.addEventListener('click', () => {
-        const clickedIndex = parseInt(star.getAttribute('data-index'));
-        let selectedRating = clickedIndex + 1; // Almacena la puntuación en una variable
+        const clickedIndex = parseInt(star.getAttribute('data-index')); // Data-index de las estrellas
+        let selectedRating = clickedIndex + 1;
 
-        // Marca como activa todas las estrellas hasta la que se hizo clic
+        // Activacion de las estrellas
         for (let i = 0; i <= clickedIndex; i++) {
             stars[i].classList.add('active');
         }
 
-        // Desmarca las estrellas después de la que se hizo clic
+        // Desactivacion
         for (let i = clickedIndex + 1; i < stars.length; i++) {
             stars[i].classList.remove('active');
         }
 
-        // Almacena la puntuación en el campo oculto
-        ratingInput.value = selectedRating;
+        ratingInput.value = selectedRating; // Puntuacion guardada
     });
   });
 
@@ -96,22 +94,22 @@ function showInfoProducts(productData, comentData) {
     let comentariosHTML =
         `<h4>COMENTARIOS</h4>
         <div class="comentario">
-              <p class="puntuacion">${comentData[0].score}<span class="fecha"> ${comentData[0].dateTime}</span></p>
+              <p class="puntuacion">${generarEstrellas(comentData[0].score)}<span class="fecha"> ${comentData[0].dateTime}</span></p>
               <p class="comentario-texto">${comentData[0].description}</p>
               <p class="usuario"><b>-${comentData[0].user}</b></p>
         </div>
         <div class="comentario">
-              <p class="puntuacion">${comentData[1].score}<span class="fecha"> ${comentData[1].dateTime}</span></p>
+              <p class="puntuacion">${generarEstrellas(comentData[1].score)}<span class="fecha"> ${comentData[1].dateTime}</span></p>
               <p class="comentario-texto">${comentData[1].description}</p>
               <p class="usuario"><b>-${comentData[1].user}</b></p>
         </div>
         <div class="comentario">
-              <p class="puntuacion">${comentData[2].score}<span class="fecha"> ${comentData[2].dateTime}</span></p>
+              <p class="puntuacion">${generarEstrellas(comentData[2].score)}<span class="fecha"> ${comentData[2].dateTime}</span></p>
               <p class="comentario-texto">${comentData[2].description}</p>
               <p class="usuario"><b>-${comentData[2].user}</b></p>
         </div>
         <div class="comentario">
-              <p class="puntuacion">${comentData[3].score}<span class="fecha"> ${comentData[3].dateTime}</span></p>
+              <p class="puntuacion">${generarEstrellas(comentData[3].score)}<span class="fecha"> ${comentData[3].dateTime}</span></p>
               <p class="comentario-texto">${comentData[3].description}</p>
               <p class="usuario"><b>-${comentData[3].user}</b></p>
         </div>`
@@ -141,8 +139,8 @@ function showInfoProducts(productData, comentData) {
 function agregarComentario() {
   let comentar = document.getElementById("comment-nuevo").value;
   let puntaje = parseInt(document.getElementById("rating").value); // Obtén la puntuación del campo oculto
-  let usuario = username; // Reemplaza esto con el nombre de usuario real
-  let fecha = obtenerFechaActual(); // Obtén la fecha actual
+  let usuario = username;
+  let fecha = obtenerFechaActual();
   let stars = document.querySelectorAll('.star');
 
   if (puntaje > 0 && puntaje <= 5) {
