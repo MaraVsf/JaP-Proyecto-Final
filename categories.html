@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" href="img/img-iconos/jap-logo.ico" />
+    <!-- nuevas fuentes de google fonts para el nav-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link rel="icon" href="img/img-iconos/jap-logo.ico">
-  <!-- nuevas fuentes de google fonts para el nav-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <nav>
-    <h2 class="logo">e-mercado</h2>
+  <body>
+    <nav>
+      <h2 class="logo">e-mercado</h2>
       <ul>
-        <li >
+        <li>
           <a href="index.html">Inicio</a>
         </li>
         <li>
@@ -35,79 +46,129 @@
         </li>
       </ul>
       <div class="dropdown">
-        <button class="dropbtn" id="logoutDropdown" style="border-color: #53C0FB;">Menú</button>
+        <button
+          class="dropbtn"
+          id="logoutDropdown"
+          style="border-color: #53c0fb"
+        >
+          Menú
+        </button>
         <div class="dropdown-content">
-          <a href="#">Perfil</a>
+          <a href="/cart.html">Mi Carrito</a>
+          <br />
+          <a href="/my-profile.html">Mi Perfil</a>
           <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
         </div>
       </div>
-  </nav>
-  <main class="pb-5">
-    <div class="text-center p-4">
-      <h2>Categorías</h2>
-      <p class="lead">Verás aquí todas las categorías del sitio.</p>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
-            <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+    </nav>
+    <main class="pb-5">
+      <div class="text-center p-4">
+        <h2>Categorías</h2>
+        <p class="lead">Verás aquí todas las categorías del sitio.</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col text-end">
+            <div
+              class="btn-group btn-group-toggle mb-4"
+              data-bs-toggle="buttons"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="sortAsc"
+              />
+              <label class="btn btn-light" for="sortAsc">A-Z</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="sortDesc"
+              />
+              <label class="btn btn-light" for="sortDesc">Z-A</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="options"
+                id="sortByCount"
+                checked
+              />
+              <label class="btn btn-light" for="sortByCount"
+                ><i class="fas fa-sort-amount-down mr-1"></i
+              ></label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-          <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Cant.</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+        <div class="row">
+          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-end my-2">Cant.</p>
+              </div>
+              <div class="col">
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="min."
+                  id="rangeFilterCountMin"
+                />
+              </div>
+              <div class="col">
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="máx."
+                  id="rangeFilterCountMax"
+                />
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterCount">
+                    Filtrar
+                  </button>
+                  <button class="btn btn-link btn-sm" id="clearRangeFilter">
+                    Limpiar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div class="row" id="cat-list-container" style="margin-top: 50px; margin-left: 20px;">
+        <div>
+          <div
+            class="row"
+            id="cat-list-container"
+            style="margin-top: 50px; margin-left: 20px"
+          ></div>
         </div>
       </div>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/index.js"></script>
-  <script src="js/categories.js"></script>
-  <script src="js/index.js"></script>
-</body>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/index.js"></script>
+  </body>
 </html>
