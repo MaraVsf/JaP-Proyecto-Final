@@ -235,7 +235,6 @@ function cleanFilter() {
 }
 
 function setProdID(id) {
-  localStorage.removeItem("prodID");
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
