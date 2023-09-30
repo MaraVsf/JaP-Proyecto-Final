@@ -14,8 +14,8 @@
     />
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
     <link href="css/product-infoStyle.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" />
      <!-- nuevas fuentes de google fonts para el nav-->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="light dark-mode">
     <nav>
       <h2 class="logo">e-mercado</h2>
       <ul>
@@ -38,6 +38,12 @@
         <li>
           <a href="sell.html">Vender</a>
         </li>
+        <li>
+          <div class="custom-toggle">
+              <input type="checkbox" id="toggle-switch">
+              <label for="toggle-switch"></label>
+          </div>
+      </li>
       </ul>
       <div class="dropdown">
         <button
@@ -62,9 +68,10 @@
       <div class="row comentarios-container">
         <hr>
         <div id="comentarios" class="mt-4 col-7">
+          <h4>COMENTARIOS</h4>
           <!--comentarios-->
         </div>
-        <div class="col-5 tucomentario" id="tucomentario">
+        <div class="col-5 tucomentario dark-mode2" id="tucomentario">
           <!--agregar comentario-->
         </div>
       </div>

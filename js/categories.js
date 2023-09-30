@@ -51,7 +51,7 @@ function showCategoriesList(){
 
                 htmlContentToAppend += `
                 <div onclick="setCatID(${category.id})"  class="col" id="container" >
-                   <div class="card" style="width: 18rem;" style="border: 5px black;" style=":hover: ">
+                   <div class="card light dark-mode2" style="width: 18rem;" style="border: 5px black;" style=":hover: ">
                        <img src="${category.imgSrc}" alt="${category.description}" class="card-img-top">
                        <div class="card-body">
                                <h4>${category.name}</h4>

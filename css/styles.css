@@ -382,3 +382,19 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+
+/* Modo oscuro */
+.dark-mode {
+  background-color: #000000;
+  color: white;
+}
+
+.dark-mode2 {
+  background-color: #232323;
+  color: white;
+}
+
+.card, .card-body {
+  border: 0;
+}

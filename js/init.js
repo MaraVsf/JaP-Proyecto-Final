@@ -46,3 +46,23 @@ const contenidoDropdown = document.querySelector('.dropdown-content');
 botonDropdown.addEventListener('click', () => {
   contenidoDropdown.classList.toggle('active');
 })
+
+
+// Modo oscuro //
+// Obtén una referencia al botón
+const toggleButton = document.getElementById('toggle-switch');
+
+// Agrega un evento de clic al botón
+toggleButton.addEventListener('click', () => {
+  // Obtén todos los elementos con la clase "light"
+  const elementsToToggle = document.querySelectorAll('.light');
+
+  // Itera a través de los elementos y cambia entre "light" y "dark-mode"
+  elementsToToggle.forEach((element) => {
+    if (element.classList.contains('light')) {
+      element.classList.replace('light', 'dark-mode');
+    } else {
+      element.classList.replace('dark-mode', 'light');
+    }
+  });
+});

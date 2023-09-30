@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productData = await res.json();
 
     //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
-    showInfoProducts(productData, comentData);
     console.log(productData);
 
     let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
@@ -17,56 +16,58 @@ document.addEventListener("DOMContentLoaded", async () => {
     const comentData = await comentRes.json();
     console.log(comentData);
 
+    showInfoProducts(productData, comentData);
   } catch (err) {
     console.error(err);
   }
 
-  // Miniatura a Imagen principal
-  const miniaturas = document.querySelectorAll('.miniatura');
-  const mainImage = document.getElementById('main-image');
-  
-  miniaturas.forEach(miniatura => {
-    miniatura.addEventListener('click', () => {
+  // Obtén una lista de todas las miniaturas
+  const miniaturas = document.querySelectorAll(".miniatura");
+  const mainImage = document.getElementById("main-image");
+
+  // Agrega un controlador de eventos a cada miniatura
+  miniaturas.forEach((miniatura) => {
+    miniatura.addEventListener("click", () => {
       mainImage.src = miniatura.src;
       mainImage.alt = miniatura.alt;
     });
   });
 
-  // Calificar con Estrellas
-  let stars = document.querySelectorAll('.star');
-  let ratingInput = document.getElementById('rating');
-  let botonEnv = document.getElementById('botonEnv');
+  // Obtén una lista de todas las estrellas
+  let stars = document.querySelectorAll(".star");
+  let ratingInput = document.getElementById("rating");
+  let botonEnv = document.getElementById("botonEnv");
 
   stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-        const clickedIndex = parseInt(star.getAttribute('data-index')); // Data-index de las estrellas
-        let selectedRating = clickedIndex + 1;
+    star.addEventListener("click", () => {
+      const clickedIndex = parseInt(star.getAttribute("data-index"));
+      let selectedRating = clickedIndex + 1; // Almacena la puntuación en una variable
 
-        // Activacion de las estrellas
-        for (let i = 0; i <= clickedIndex; i++) {
-            stars[i].classList.add('active');
-        }
+      // Marca como activa todas las estrellas hasta la que se hizo clic
+      for (let i = 0; i <= clickedIndex; i++) {
+        stars[i].classList.add("active");
+      }
 
-        // Desactivacion
-        for (let i = clickedIndex + 1; i < stars.length; i++) {
-            stars[i].classList.remove('active');
-        }
+      // Desmarca las estrellas después de la que se hizo clic
+      for (let i = clickedIndex + 1; i < stars.length; i++) {
+        stars[i].classList.remove("active");
+      }
 
-        ratingInput.value = selectedRating; // Puntuacion guardada
+      // Almacena la puntuación en el campo oculto
+      ratingInput.value = selectedRating;
     });
   });
 
-  botonEnv.addEventListener('click', () => {
+  botonEnv.addEventListener("click", () => {
     agregarComentario();
-  })
-
+  });
 });
-
 
 function showInfoProducts(productData, comentData) {
   let container = document.getElementById("container");
-  let comentarios = document.getElementById("comentarios");
+  let cajaComentarios = document.getElementById("comentarios");
   let tucomentario = document.getElementById("tucomentario");
+  let comentariosProducto = "";
 
   let productInfoHTML = `
     <div class="row product-container">
@@ -85,37 +86,26 @@ function showInfoProducts(productData, comentData) {
       <div class="col-5 caractproducto">
         <h2>${productData.name}</h2>
         <p>${productData.description}</p>
-        <p id="precio">UYU ${productData.cost}</p>
+        <p id="precio">${productData.currency} ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
       </div>
-    </div>`
+    </div>`;
 
-    let comentariosHTML =
-        `<h4>COMENTARIOS</h4>
-        <div class="comentario">
-              <p class="puntuacion">${generarEstrellas(comentData[0].score)}<span class="fecha"> ${comentData[0].dateTime}</span></p>
-              <p class="comentario-texto">${comentData[0].description}</p>
-              <p class="usuario"><b>-${comentData[0].user}</b></p>
-        </div>
-        <div class="comentario">
-              <p class="puntuacion">${generarEstrellas(comentData[1].score)}<span class="fecha"> ${comentData[1].dateTime}</span></p>
-              <p class="comentario-texto">${comentData[1].description}</p>
-              <p class="usuario"><b>-${comentData[1].user}</b></p>
-        </div>
-        <div class="comentario">
-              <p class="puntuacion">${generarEstrellas(comentData[2].score)}<span class="fecha"> ${comentData[2].dateTime}</span></p>
-              <p class="comentario-texto">${comentData[2].description}</p>
-              <p class="usuario"><b>-${comentData[2].user}</b></p>
-        </div>
-        <div class="comentario">
-              <p class="puntuacion">${generarEstrellas(comentData[3].score)}<span class="fecha"> ${comentData[3].dateTime}</span></p>
-              <p class="comentario-texto">${comentData[3].description}</p>
-              <p class="usuario"><b>-${comentData[3].user}</b></p>
-        </div>`
+  comentData.forEach((comentario) => {
+    comentariosProducto = `
+    <div class="comentario dark-mode2">
+        <p class="puntuacion">
+          ${generarEstrellas(comentario.score)}
+          <span class="fecha">${comentario.dateTime}</span></p>
+        <p class="comentario-texto">${comentario.description}</p>
+        <p class="usuario"><b>-${comentario.user}</b></p>
+    </div>
+    `;
+    cajaComentarios.innerHTML += comentariosProducto;
+  });
 
-    let tucomentarioHTML =
-        `<h4>Agrega un comentario</h4>
+  let tucomentarioHTML = `<h4>Agrega un comentario</h4>
         <label for="estrellas">Toca una estrella para calificar
           <div id="puntos" class="custom-select star-rating">
             <input type="hidden" id="rating" value="0">
@@ -132,21 +122,20 @@ function showInfoProducts(productData, comentData) {
         <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
     `;
   container.innerHTML = productInfoHTML;
-  comentarios.innerHTML = comentariosHTML;
   tucomentario.innerHTML = tucomentarioHTML;
 }
 
 function agregarComentario() {
   let comentar = document.getElementById("comment-nuevo").value;
   let puntaje = parseInt(document.getElementById("rating").value); // Obtén la puntuación del campo oculto
-  let usuario = username;
-  let fecha = obtenerFechaActual();
-  let stars = document.querySelectorAll('.star');
+  let usuario = username; // Reemplaza esto con el nombre de usuario real
+  let fecha = obtenerFechaActual(); // Obtén la fecha actual
+  let stars = document.querySelectorAll(".star");
 
   if (puntaje > 0 && puntaje <= 5) {
-      let estrellasHTML = generarEstrellas(puntaje);
+    let estrellasHTML = generarEstrellas(puntaje);
 
-      const nuevoComentario = `
+    const nuevoComentario = `
           <div class="comentario">
               <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
               <p class="comentario-texto">${comentar}</p>
@@ -154,38 +143,54 @@ function agregarComentario() {
           </div>
       `;
 
-      document.getElementById("comentarios").innerHTML += nuevoComentario;
-      console.log(stars);
-      // Restaura la selección de estrellas y el campo de comentario
-      stars.forEach(star => star.classList.remove('active'));
-      document.getElementById("comment-nuevo").value = "";
-      document.getElementById("rating").value = "0";
+    document.getElementById("comentarios").innerHTML += nuevoComentario;
+    console.log(stars);
+    // Restaura la selección de estrellas y el campo de comentario
+    stars.forEach((star) => star.classList.remove("active"));
+    document.getElementById("comment-nuevo").value = "";
+    document.getElementById("rating").value = "0";
   } else {
-      alert("Por favor, selecciona una puntuación válida.");
+    alert("Por favor, selecciona una puntuación válida.");
   }
 }
 
 function obtenerFechaActual() {
   const fecha = new Date();
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return fecha.toLocaleDateString('es-ES', options);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return fecha.toLocaleDateString("es-ES", options);
 }
-
-
 
 function generarEstrellas(puntaje) {
-  let estrellaLlena = "<img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'>";
-  let estrellaVacia = "<img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>";
-  
+  let estrellaLlena =
+    "<img src='img/estrellaCompleta.svg' alt='Estrella completa' width='15px'>";
+  let estrellaVacia =
+    "<img src='img/estrellaVacia.svg' alt='Estrella vacía'  width='15px'>";
+
   let estrellasHTML = "";
-  
+
   for (let i = 0; i < 5; i++) {
-      if (i < puntaje) {
-          estrellasHTML += estrellaLlena;
-      } else {
-          estrellasHTML += estrellaVacia;
-      }
+    if (i < puntaje) {
+      estrellasHTML += estrellaLlena;
+    } else {
+      estrellasHTML += estrellaVacia;
+    }
   }
-  
+
   return estrellasHTML;
 }
+
+const nuevoComentario = `
+          <div class="comentario">
+              <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
+              <p class="comentario-texto">${comentar}</p>
+              <p class="usuario"><b>-${usuario}</b></p>
+          </div>
+      `;
+
+document.getElementById("comentarios").innerHTML += nuevoComentario;
+
+document.getElementById("comentarios").innerHTML += nuevoComentario;
