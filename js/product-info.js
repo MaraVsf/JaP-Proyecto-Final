@@ -64,11 +64,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function showInfoProducts(productData, comentData) {
-  let container = document.getElementById("container");
-  let cajaComentarios = document.getElementById("comentarios");
+  const container = document.getElementById("container-product");
+  const cajaComentarios = document.getElementById("comentarios");
 
-
-  let productosRelacionados = document.getElementById("relacionados");
+  const productosRelacionados = document.getElementById("relacionados");
 
   let tucomentario = document.getElementById("tucomentario");
   let comentariosProducto = "";
@@ -99,7 +98,7 @@ function showInfoProducts(productData, comentData) {
   comentData.forEach((comentario) => {
     comentariosProducto = `
 
-    <div class="comentario light2">
+    <div class="comentario light2" style="color: #161515;">
 
         <p class="puntuacion">
           ${generarEstrellas(comentario.score)}
@@ -114,7 +113,7 @@ function showInfoProducts(productData, comentData) {
 
   let tucomentarioHTML = `<h4>Agrega un comentario</h4>
         <label for="estrellas">Toca una estrella para calificar
-          <div id="puntos" class="custom-select star-rating">
+          <div id="puntos" class="custom-select star-rating" style="color: #161515;">
             <input type="hidden" id="rating" value="0">
             <span class="star" data-index="0">&#9733;</span>
             <span class="star" data-index="1">&#9733;</span>
@@ -138,8 +137,8 @@ function showInfoProducts(productData, comentData) {
     <div class="card light2 mb-4 custom-shadow h-100 bg-light cursor-active">
         <img src="./${relatedProduct.image}" style="pointer-events: none;" class="card-img-top" alt="${relatedProduct.name}">
         <div class="card-body">
-            <p class="card-text"> 
-                <p class="nameCar">${relatedProduct.name}</p>
+            <p class="card-text" style="color: #161515;"> 
+                <p class="nameCar" style="color: #161515;">${relatedProduct.name}</p>
             </p>
         </div>    
     </div>
@@ -215,11 +214,9 @@ const nuevoComentario = `
 
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
-
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
 function setProdID(id) {
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
-

@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 function createCard(producto) {
   tarjeta += `
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="setProdID(${producto.id})">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="setProdID(${producto.id})" style="color: #161515;">
         <div class="card light2 mb-4 custom-shadow h-100 bg-light cursor-active">
             <img src="./${producto.image}" class="card-img-top" alt="${producto.name}">
-            <div class="card-body light2">
+            <div class="card-body light2" style="background-color: #f2f2f2;">
                 <p class="card-text"> 
                     <p class="nameCar">${producto.name}</p>
                     <p class="desCar">${producto.description}</p>
