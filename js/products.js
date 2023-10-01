@@ -90,15 +90,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function createCard(producto) {
   tarjeta += `
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="setProdID(${producto.id})">
-        <div class="card dark-mode2 mb-4 custom-shadow h-100 bg-light cursor-active">
+        <div class="card light2 mb-4 custom-shadow h-100 bg-light cursor-active">
             <img src="./${producto.image}" class="card-img-top" alt="${producto.name}">
-            <div class="card-body light dark-mode2">
+            <div class="card-body light2">
                 <p class="card-text"> 
                     <p class="nameCar">${producto.name}</p>
                     <p class="desCar">${producto.description}</p>
                 </p>    
             </div>    
-                <div class="priceAmount d-flex justify-content-between align-items-center">
+                <div class="priceAmount d-flex justify-content-between align-items-center rounded-2 light2">
                     <p class="priceCar">${producto.currency} ${producto.cost}</p>
                     <p class="amountCar ms-auto me-0">${producto.soldCount}</p>
                 </div>

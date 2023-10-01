@@ -99,7 +99,7 @@ function showInfoProducts(productData, comentData) {
   comentData.forEach((comentario) => {
     comentariosProducto = `
 
-    <div class="comentario dark-mode2">
+    <div class="comentario light2">
 
         <p class="puntuacion">
           ${generarEstrellas(comentario.score)}
@@ -135,7 +135,7 @@ function showInfoProducts(productData, comentData) {
     console.log(relatedProduct);
     productosRelacionados.innerHTML += `
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="setProdID(${relatedProduct.id})">
-    <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+    <div class="card light2 mb-4 custom-shadow h-100 bg-light cursor-active">
         <img src="./${relatedProduct.image}" style="pointer-events: none;" class="card-img-top" alt="${relatedProduct.name}">
         <div class="card-body">
             <p class="card-text"> 
