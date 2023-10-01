@@ -53,9 +53,15 @@ botonDropdown.addEventListener("click", () => {
 // Obtén una referencia al botón
 const toggleButton = document.getElementById("toggle");
 
-if (!(localStorage.getItem("theme") == "light") || !(localStorage.getItem("theme") == "dark")) {
-  localStorage.setItem("theme", "light");
-}
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("theme") == "light") {
+    localStorage.setItem("theme", "light");
+  } else if (localStorage.getItem("theme") == "dark") {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+});
 
 // Obtén todos los elementos con la clase "light" y "light2"
 const elementsToToggle = document.querySelectorAll(".light, .light2");
