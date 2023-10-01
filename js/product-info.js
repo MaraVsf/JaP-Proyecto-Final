@@ -66,6 +66,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 function showInfoProducts(productData, comentData) {
   let container = document.getElementById("container");
   let cajaComentarios = document.getElementById("comentarios");
+
+
+  let productosRelacionados = document.getElementById("relacionados");
+
   let tucomentario = document.getElementById("tucomentario");
   let comentariosProducto = "";
 
@@ -94,7 +98,9 @@ function showInfoProducts(productData, comentData) {
 
   comentData.forEach((comentario) => {
     comentariosProducto = `
+
     <div class="comentario dark-mode2">
+
         <p class="puntuacion">
           ${generarEstrellas(comentario.score)}
           <span class="fecha">${comentario.dateTime}</span></p>
@@ -102,6 +108,7 @@ function showInfoProducts(productData, comentData) {
         <p class="usuario"><b>-${comentario.user}</b></p>
     </div>
     `;
+
     cajaComentarios.innerHTML += comentariosProducto;
   });
 
@@ -123,6 +130,21 @@ function showInfoProducts(productData, comentData) {
     `;
   container.innerHTML = productInfoHTML;
   tucomentario.innerHTML = tucomentarioHTML;
+
+  productData.relatedProducts.forEach((relatedProduct) => {
+    console.log(relatedProduct);
+    productosRelacionados.innerHTML += `
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" onclick="setProdID(${relatedProduct.id})">
+    <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+        <img src="./${relatedProduct.image}" style="pointer-events: none;" class="card-img-top" alt="${relatedProduct.name}">
+        <div class="card-body">
+            <p class="card-text"> 
+                <p class="nameCar">${relatedProduct.name}</p>
+            </p>
+        </div>    
+    </div>
+  </div>`;
+  });
 }
 
 function agregarComentario() {
@@ -193,4 +215,11 @@ const nuevoComentario = `
 
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
+
 document.getElementById("comentarios").innerHTML += nuevoComentario;
+
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
+

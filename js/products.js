@@ -199,3 +199,42 @@ function setProdID(id) {
   window.location = "product-info.html";
 }
 
+function moverCarrousel(direction) {
+  let container = document.querySelector(".container-tarjetas");
+  let ancho = window.innerWidth;
+  if (direction == "left") {
+    container.scrollTo({
+      left: container.scrollLeft - ancho,
+      behavior: "smooth",
+    });
+  } else if (direction == "right") {
+    container.scrollTo({
+      left: container.scrollLeft + ancho,
+      behavior: "smooth",
+    });
+  }
+}
+
+document.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    valorBusqueda = document.querySelector("#search").value;
+    barrraDeBusqueda();
+  }
+});
+
+function cleanFilter() {
+  container.innerHTML = "";
+  tarjeta = "";
+
+  for (let producto of objeto_productos) {
+    createCard(producto);
+  }
+
+  addProduct();
+}
+
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
