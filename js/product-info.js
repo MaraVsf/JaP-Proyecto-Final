@@ -64,11 +64,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function showInfoProducts(productData, comentData) {
-  let container = document.getElementById("container");
-  let cajaComentarios = document.getElementById("comentarios");
+  const container = document.getElementById("container-product");
+  const cajaComentarios = document.getElementById("comentarios");
 
-
-  let productosRelacionados = document.getElementById("relacionados");
+  const productosRelacionados = document.getElementById("relacionados");
 
   let tucomentario = document.getElementById("tucomentario");
   let comentariosProducto = "";
@@ -215,11 +214,9 @@ const nuevoComentario = `
 
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
-
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
 function setProdID(id) {
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
-
