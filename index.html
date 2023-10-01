@@ -37,36 +37,35 @@
     </style>
   </head>
 
-  <body>
+<body class="light dark-mode">
     <nav>
-      <h2 class="logo">e-mercado</h2>
-      <ul>
-        <li>
-          <a href="index.html">Inicio</a>
-        </li>
-        <li>
-          <a href="categories.html">Categorías</a>
-        </li>
-        <li>
-          <a href="sell.html">Vender</a>
-        </li>
-      </ul>
-      <div class="dropdown">
-        <button
-          class="dropbtn"
-          id="logoutDropdown"
-          style="border-color: #53c0fb"
-        >
-          Menú
-        </button>
-        <div class="dropdown-content">
-          <a href="/cart.html">Mi Carrito</a>
-          <br />
-          <a href="/my-profile.html">Mi Perfil</a>
-          <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
-        </div>
-      </div>
-    </nav>
+        <h2 class="logo">e-mercado</h2>
+          <ul>
+            <li >
+              <a href="index.html">Inicio</a>
+            </li>
+            <li>
+              <a href="categories.html" >Categorías</a>
+            </li>
+            <li>
+              <a href="sell.html">Vender</a>
+            </li>
+            <li>
+                <div class="custom-toggle">
+                    <input type="checkbox" id="toggle-switch">
+                    <label for="toggle-switch"></label>
+                </div>
+            </li>
+          </ul>
+          <div class="dropdown">
+            <button class="dropbtn" id="logoutDropdown" style="border-color: #53C0FB;">Menú</button>
+            <div class="dropdown-content">
+              <a href="#">Perfil</a>
+              <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
+            </div>
+          </div>
+      </nav>
+
     <main>
       <!-- <div class="jumbotron text-center"></div> -->
 

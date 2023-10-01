@@ -66,7 +66,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 function showInfoProducts(productData, comentData) {
   let container = document.getElementById("container");
   let cajaComentarios = document.getElementById("comentarios");
+
+
   let productosRelacionados = document.getElementById("relacionados");
+
   let tucomentario = document.getElementById("tucomentario");
   let comentariosProducto = "";
 
@@ -95,7 +98,9 @@ function showInfoProducts(productData, comentData) {
 
   comentData.forEach((comentario) => {
     comentariosProducto = `
-    <div class="comentario">
+
+    <div class="comentario dark-mode2">
+
         <p class="puntuacion">
           ${generarEstrellas(comentario.score)}
           <span class="fecha">${comentario.dateTime}</span></p>
@@ -210,9 +215,11 @@ const nuevoComentario = `
 
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
+
 document.getElementById("comentarios").innerHTML += nuevoComentario;
 
 function setProdID(id) {
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
+

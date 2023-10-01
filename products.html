@@ -31,9 +31,24 @@
     />
   </head>
 
-  <body>
-    <nav>
-      <h2 class="logo">e-mercado</h2>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="img/img-iconos/jap-logo.ico">
+   <!-- nuevas fuentes de google fonts para el nav-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="light dark-mode">
+  <nav>
+    <h2 class="logo">e-mercado</h2>
+
       <ul>
         <li>
           <a href="index.html">Inicio</a>
@@ -44,6 +59,12 @@
         <li>
           <a href="sell.html">Vender</a>
         </li>
+        <li>
+          <div class="custom-toggle">
+              <input type="checkbox" id="toggle-switch">
+              <label for="toggle-switch"></label>
+          </div>
+      </li>
       </ul>
       <div class="dropdown">
         <button
