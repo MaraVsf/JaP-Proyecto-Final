@@ -72,6 +72,10 @@ toggleButton.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Verifica si localStorage.theme ya está configurado
+  if (!localStorage.getItem("theme")) {
+    localStorage.setItem("theme", "light");
+  }
   setTheme();
 });
 
