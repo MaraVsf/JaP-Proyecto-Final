@@ -46,13 +46,21 @@ nav {
   display: none;
   flex-direction: column;
   position: absolute;
+  right: 5px;
   background-color: #53c0fb;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 /* Enlaces dentro del contenido desplegable */
+.dropdown-content li {
+  list-style-type: none;
+  margin-bottom: 4px;
+}
+
 .dropdown-content a {
   text-decoration: none;
   font-family: "Merriweather", serif;
@@ -76,14 +84,14 @@ nav {
   font-family: "Lilita One", cursive;
 }
 
-nav ul li {
+.menu li {
   list-style-type: none;
   display: inline-block;
   padding: 10px 45px;
   padding-top: 20px;
 }
 
-ul li a {
+.menu li a {
   text-decoration: none;
   font-family: "Merriweather", serif;
   color: #006d77;
@@ -172,6 +180,12 @@ a:hover {
   width: 100%;
   margin-top: -250px;
 }
+
+/* #autos {
+  background-image: url('ruta-a-tu-imagen.jpg');
+  background-size: cover;
+} */
+
 
 .flechas {
   position: absolute;
@@ -562,6 +576,7 @@ footer p {
   display: inline-block;
   width: 7em;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 /* Hide default HTML checkbox */
@@ -627,3 +642,36 @@ footer p {
   opacity: 1;
 }
 
+.menuCel {
+  display: none;
+}
+
+#logout {
+  margin-left: 5px;
+}
+
+@media (max-width: 980px) {
+  .menu {
+    display: none;
+  }
+
+  .menuCel {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  #theme-toggle-button {
+    width: 4em;
+  }
+
+  .logo {
+    font-size: 26px;
+    font-weight: 100px;
+  }
+
+  .dropbtn {
+    width: 4em;
+    font-size: 20px;
+  }
+}
