@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', ()=> {
-   let cantidad=document.getElementById('cantidad').value;
+   let cantidad=parseInt(document.getElementById('cantidad').value);
    let costo=document.getElementById('costo').value;
     let subtotal=document.getElementById("subtotal")
 
