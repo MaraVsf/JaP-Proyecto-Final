@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     function CalcularTotal(){
         let subtotales=document.getElementsByClassName(subtotal);
         for(i=0;i<subtotales.length;i++)
-        Total=subtotales.value+subtotales.value;
+        Total=Total+subtotales[i].value;
     }
     cantidad.addEventListener("input",CalcularSubtotal);
     CalcularSubtotal();
