@@ -27,6 +27,10 @@ nav {
   display: inline-block;
 }
 
+#logoIndex {
+  text-decoration: none;
+}
+
 /* Botón del menú */
 .dropbtn {
   background-color: #caf0f8;
@@ -163,10 +167,12 @@ a:hover {
   display: flex;
   align-items: center;
 }
+
 .container-tarjetas {
   display: flex;
   max-width: 100%;
   overflow-y: scroll;
+  margin-top: 90px;
 }
 
 .tarjetas {
@@ -181,29 +187,24 @@ a:hover {
   margin-top: -250px;
 }
 
-/* #autos {
-  background-image: url('ruta-a-tu-imagen.jpg');
-  background-size: cover;
-} */
-
-
 .flechas {
   position: absolute;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  z-index: 3;
+  z-index: 2;
 }
 
 .flecha {
   width: 60px;
   height: 100px;
   background-color: rgb(0 0 0 / 50%);
+  cursor: pointer;
 }
 
 .flecha div {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
 }
 
 .texto-descripcion a {
@@ -670,6 +671,12 @@ footer p {
 }
 
 @media (max-width: 980px) {
+  .flecha {
+    margin-top: 150px;
+    width: 40px;
+    height: 70px;
+  }
+
   .menu {
     display: none;
   }
@@ -692,5 +699,46 @@ footer p {
   .dropbtn {
     width: 4em;
     font-size: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .tarjetas {
+    min-width: 100%;
+    max-height: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .img-tarjetas {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  #infEnd {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: start;
+  }
+}
+
+@media (min-width: 769px) {
+  .container-tarjetas {
+    display: flex;
+    max-width: 100%;
+    overflow-y: hidden;
+  }
+  
+  .tarjetas {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .img-tarjetas {
+    width: 100%;
+    margin-top: 0;
   }
 }
