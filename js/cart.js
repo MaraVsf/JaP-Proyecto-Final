@@ -1,5 +1,5 @@
 let idusuario = 25801;
-let carritoendpoint = `https://japceibal.github.io/emercado-api/user_cart/?idusuario=${idusuario}`;
+let carritoendpoint = `https://japceibal.github.io/emercado-api/user_cart/${idusuario}.json`;
 
 fetch(carritoendpoint)
   .then(response => {
@@ -9,8 +9,14 @@ fetch(carritoendpoint)
     return response.json();
   })
   .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Ocurrió un error:', error);
-  });
+    let cartContainer = document.getElementById("cartCont");
+    let cartProd = data.articles;
+    let cartContent = ``;
+
+   cartProd.forEach(producto => {
+    cartContent += `<img src=${producto.image} alt="imagenDeProducto" /> Producto: ${producto.name}, Precio: ${producto.currency} ${producto.unitCost} Cantidad: <input type="number" id="cantProd" value="${producto.count}" min="1" /> Subtotal: ${producto.currency}`
+   });
+
+   cartContainer.innerHTML = cartContent
+
+    });
