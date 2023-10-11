@@ -29,7 +29,6 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
       rel="stylesheet"
     />
-  </head>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -262,11 +261,14 @@
     </div>
   </nav>
     <main class="pb-5 container">
-      <div class="text-center p-4">
+      <!-- Titulo -->
+      <section class="text-center p-4">
         <h2>Productos</h2>
         <p class="lead"></p>
-      </div>
-      <div class="search-wrap">
+      </section>
+
+      <!-- Buscador -->
+      <section class="search-wrap">
         <div class="search-container">
           <input
             type="text"
@@ -281,10 +283,13 @@
             />
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col text-end">
+      </section>
+
+      <!-- Cuerpo -->
+      <section class="container">
+        <!-- Filtros por orden alfabetico -->
+        <article class="row">
+          <div class="col text-lg-end text-center m-5">
             <div
               class="btn-group btn-group-toggle mb-4"
               data-bs-toggle="buttons"
@@ -322,14 +327,16 @@
               <!-- Orden descendente en función de la relevancia -->
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
-                <p class="font-weight-normal text-end my-2">Precio</p>
+        </article>
+
+        <!-- Filtros precio -->
+        <article class="row justify-content-center m-5">
+          <div class="offset-lg-6 col-lg-6 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0 flex-column flex-md-row">
+              <div class="col text-md-end mb-2">
+                <p class="font-weight-normal" style="padding-top: 5px;">Precio</p>
               </div>
-              <div class="col">
+              <div class="col-md-3 mb-2">
                 <input
                   class="form-control"
                   type="number"
@@ -337,7 +344,7 @@
                   id="rangeFilterCountMin"
                 />
               </div>
-              <div class="col">
+              <div class="col-md-3 mb-2">
                 <input
                   class="form-control"
                   type="number"
@@ -345,13 +352,13 @@
                   id="rangeFilterCountMax"
                 />
               </div>
-              <div class="col-3 p-0">
+              <div class="col-md-3 mb-2">
                 <div class="btn-group" role="group">
                   <button class="btn btn-light btn-block" id="rangeFilterCount">
                     Filtrar
                   </button>
                   <!-- Botón de Filtrar -->
-                  <button class="btn btn-link btn-sm" id="clearRangeFilter">
+                  <button class="btn btn-light btn-block" id="clearRangeFilter">
                     Limpiar
                   </button>
                   <!-- Botón de Limpiar -->
@@ -359,11 +366,13 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
+        </article>
+        
+        <!-- Productos -->
+        <article class="row">
           <div class="list-group" id="productsContainer"></div>
-        </div>
-      </div>
+        </article>
+      </section>
     </main>
 
     <footer class="text-muted">
@@ -379,6 +388,7 @@
         </p>
       </div>
     </footer>
+
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>
