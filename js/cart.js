@@ -1,18 +1,59 @@
-document.addEventListener('DOMContentLoaded', ()=> {
-   let cantidad=parseInt(document.getElementById('cantidad').value);
-   let costo=document.getElementById('costo').value;
-    let subtotal=document.getElementById("subtotal")
+let idusuario = 25801;
+let carritoendpoint = `https://japceibal.github.io/emercado-api/user_cart/${idusuario}.json`;
 
-    function CalcularSubtotal(){
-        subtotal=cantidad*costo;
+fetch(carritoendpoint)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
     }
-    function CalcularTotal(){
-        let subtotales=document.getElementsByClassName(subtotal);
-        for(i=0;i<subtotales.length;i++)
-        Total=Total+subtotales[i].value;
+    return response.json();
+  })
+  .then(data => {
+    let cartContainer = document.getElementById("cartCont");
+    let cartProd = data.articles;
+    let cartContent = '';
+    let subtotal = 0;
+
+    function CalcularSubtotal(cantidad, precio) {
+        return cantidad * precio;
     }
-    cantidad.addEventListener("input",CalcularSubtotal);
-    CalcularSubtotal();
-   });
-  
+
+    cartProd.forEach((producto, index) => {
+        let cantidad = producto.count;
+        let precio = producto.unitCost;
+        let subtotalProducto = CalcularSubtotal(cantidad, precio);
+        subtotal += subtotalProducto;
+
+        cartContent += `
+            <img src="${producto.image}" alt="imagenDeProducto" />
+            Producto: ${producto.name}, Precio: ${producto.currency} ${producto.unitCost}
+            Cantidad: <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
+            Subtotal: <span id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</span>
+            <br>
+        `;
+    });
+
+    cartContainer.innerHTML = cartContent;
+
+    let cantidadInputs = document.querySelectorAll('.cantProd');
+    cantidadInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            let cantidad = parseInt(input.value);
+            let productoIndex = parseInt(input.dataset.productIndex);
+            let producto = cartProd[productoIndex];
+            let nuevoSubtotal = CalcularSubtotal(cantidad, producto.unitCost);
+
+            producto.subtotal = nuevoSubtotal;
+            producto.count = cantidad;
+
+            document.getElementById(`subtotalProducto${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+
+            subtotal = cartProd.reduce((total, prod) => total + prod.subtotal, 0);
+
+            document.getElementById("subtotal").textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
+        });
+    });
+
+    document.getElementById("subtotal").textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
+});
   
