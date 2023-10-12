@@ -55,3 +55,28 @@ fetch(carritoendpoint)
       "subtotal"
     ).textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
   });
+
+  //AÑADIR MAS ELEMENTOS
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      let prodID = localStorage.getItem("prodID");
+  
+      let endpoint = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
+  
+      const res = await fetch(endpoint);
+      const productData = await res.json();
+  
+      //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
+      console.log(productData);
+  
+      let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
+      const comentRes = await fetch(comentEndpoint);
+      const comentData = await comentRes.json();
+      console.log(comentData);
+  
+      showInfoProducts(productData, comentData);
+    } catch (err) {
+      console.error(err);
+    }
+}); 
+ 

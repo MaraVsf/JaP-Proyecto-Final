@@ -61,6 +61,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   botonEnv.addEventListener("click", () => {
     agregarComentario();
   });
+
+//AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
+  function getProdId() {
+    
+    window.location = "cart.html";
+  }
+
+      //AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
+        let addCart = document.getElementById("addCart");
+        addCart.addEventListener("click", ()=> {
+          getProdId();
+         
+          console.log("click");
+        });
+        console.log(getProdId);
+ 
 });
 
 function showInfoProducts(productData, comentData) {
@@ -92,8 +108,14 @@ function showInfoProducts(productData, comentData) {
         <p id="precio">${productData.currency} ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
+       <button class="btn btn-danger" id="addCart" >Añadir al carrito</button>
       </div>
     </div>`;
+
+
+
+
+
 
   comentData.forEach((comentario) => {
     comentariosProducto = `
@@ -122,8 +144,15 @@ function showInfoProducts(productData, comentData) {
             <span class="star" data-index="4">&#9733;</span>
           </div>
         </label><br>
+
+        <label for="cuadrocom">
+          <textarea placeholder="Escriba aquí su comentario..." id="comment-nuevo"></textarea><br>
+        </label><br> 
+        <button class="btn btn-primary" id="botonEnv">Enviar</button>
+
         <textarea class="form-control" id="comment-nuevo" placeholder="Escriba aquí su comentario..."></textarea><br>
         <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
+
     `;
   container.innerHTML = productInfoHTML;
   tucomentario.innerHTML = tucomentarioHTML;
