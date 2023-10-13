@@ -191,11 +191,7 @@
                 ></path>
               </g>
 
-              <g
-                fill="#def8ff"
-                transform="translate(3.585 1.325)"
-                id="stars"
-              >
+              <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
                 <path
                   transform="matrix(-1, 0.017, -0.017, -1, 24.231, 3.055)"
                   d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"
@@ -242,38 +238,46 @@
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn" id="logoutDropdown" style="border-color: #53c0fb"></button>
+        <button
+          class="dropbtn"
+          id="logoutDropdown"
+          style="border-color: #53c0fb"
+        ></button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
           <li class="menuCel"><a href="categories.html">Categorías</a></li>
           <li class="menuCel"><a href="sell.html">Vender</a></li>
           <li><a href="cart.html">Mi Carrito</a></li>
           <li><a href="my-profile.html">Mi Perfil</a></li>
-          <li><button class="btn btn-danger" id="logout">Cerrar Sesión</button></li>
+          <li>
+            <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
+          </li>
         </ul>
       </div>
     </nav>
 
     <main>
-        <!-- <div class="jumbotron text-center"></div> -->
-       
-        
+      <!-- <div class="jumbotron text-center"></div> -->
 
-        <div class="categorias">
-            <div class="flechas">
-                <div class="flecha">
-                    <div onclick="moverCarrousel('left')"></div>
-                </div>
-                <div class="flecha">
-                    <div onclick="moverCarrousel('right')"></div>
-                </div>
-            </div>    
+      <div class="categorias">
+        <div class="flechas">
+          <div class="flecha">
+            <div onclick="moverCarrousel('left')"></div>
+          </div>
+          <div class="flecha">
+            <div onclick="moverCarrousel('right')"></div>
+          </div>
+        </div>
 
-            <div class="container-tarjetas">
-                <div class="tarjetas" id="autos">
-                    <img class="img-tarjetas" src="img/cars_index.jpg"
-                    alt="Imgagen representativa de la categoría 'Autos'">
-                    <!-- <h3 class="m-3">Autos</h3>
+        <div class="container-tarjetas">
+          <div class="tarjetas" id="autos">
+            <img
+              onclick="setCatID(101)"
+              class="img-tarjetas"
+              src="img/cars_index.jpg"
+              alt="Imgagen representativa de la categoría 'Autos'"
+            />
+            <!-- <h3 class="m-3">Autos</h3>
                     <div class="card-body">
                         <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
                     </div> -->
@@ -281,6 +285,7 @@
 
           <div class="tarjetas" id="juguetes">
             <img
+              onclick="setCatID(102)"
               class="img-tarjetas"
               src="img/toys_index.jpg"
               alt="Imgagen representativa de la categoría 'Juguetes'"
@@ -294,6 +299,7 @@
 
           <div class="tarjetas" id="muebles">
             <img
+              onclick="setCatID(103)"
               class="img-tarjetas"
               src="img/furniture_index.jpg"
               alt="Imgagen representativa de la categoría 'Muebles'"
