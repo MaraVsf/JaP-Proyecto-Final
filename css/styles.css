@@ -185,6 +185,7 @@ a:hover {
 .img-tarjetas {
   width: 100%;
   margin-top: -250px;
+  cursor: pointer;
 }
 
 .flechas {
