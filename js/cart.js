@@ -113,6 +113,7 @@ function updateCartTable() {
     `;
     tbody.appendChild(row);
   });
+  
 
   // Agrega un evento input a los elementos de cantidad
   const cantidadInputs = document.querySelectorAll(".cantProd");
