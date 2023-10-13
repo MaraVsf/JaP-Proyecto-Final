@@ -54,7 +54,7 @@ nav {
   background-color: #53c0fb;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 2;
   padding: 15px;
   border-radius: 5px;
 }
@@ -214,13 +214,11 @@ a:hover {
   text-decoration: none;
   color: black;
 
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 50px;
 
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 50px;
-  
-
 }
 
 /* .boton-categoria {
@@ -233,8 +231,6 @@ a:hover {
   padding-right: 10px;
 
 } */
-
-
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -567,10 +563,8 @@ footer {
 }
 
 footer p {
-
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
-
 
 /* Modo oscuro */
 .dark-mode {
@@ -583,9 +577,9 @@ footer p {
   color: white;
 }
 
-.card, .card-body {
+.card,
+.card-body {
   border: 0;
-
 }
 
 /* Modo oscuro BOTON*/
@@ -702,7 +696,6 @@ footer p {
   }
 }
 
-
 @media (max-width: 768px) {
   .tarjetas {
     min-width: 100%;
@@ -710,7 +703,7 @@ footer p {
     overflow: hidden;
     position: relative;
   }
-  
+
   .img-tarjetas {
     width: 100%;
     margin-top: 0;
@@ -729,18 +722,16 @@ footer p {
     max-width: 100%;
     overflow-y: hidden;
   }
-  
+
   .tarjetas {
     flex: 0 0 33.33%;
     max-width: 33.33%;
     overflow: hidden;
     position: relative;
   }
-  
+
   .img-tarjetas {
     width: 100%;
     margin-top: 0;
   }
 }
-
-
