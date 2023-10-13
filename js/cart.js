@@ -57,8 +57,6 @@ fetch(carritoendpoint)
     console.error("Error de conexión:", error);
   });
 
-
-  
 // Recuperar el carrito desde el almacenamiento local (si existe)
 let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
 
@@ -99,6 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 function updateCartTable() {
   const tbody = document.getElementById('cart-list');
 
+
   // Limpiar el contenido existente de la tabla
   tbody.innerHTML = '';
 
@@ -131,6 +130,7 @@ function updateCartTable() {
   });
 }
 
+//CALCULAR TOTAL
 function calcularTotal() {
   let total = 0;
   let costoEnvio = 100;
@@ -172,38 +172,3 @@ Array.from(document.getElementsByClassName("cantProd")).forEach(element => {
     calcularTotal();
   });
 });
-
-//   let total = 0;
-
-//   // Recorre los productos y suma sus subtotales al total
-//   allProducts.forEach((product) => {
-//     total += product.subtotal;
-//   });
-
-//   return total;
-// }
-
-// // Llama a la función para calcular el total y actualiza la visualización
-// function actualizarTotal() {
-//   const total = calcularTotal();
-//   document.getElementById("total").textContent = `Total: ${allProducts[0].currency}${total}`;
-// }
-// actualizarTotal();
-
-// let subtotalProductos = allProducts.reduce((total, product) => total + product.subtotal, 0);
-
-// let tipoEnvio = document.getElementById("tipoEnvio").value;
-// let costoEnvio = 0;
-
-// if (tipoEnvio === "premium") {
-//   costoEnvío = subtotalProductos * 0.15;
-// } else if (tipoEnvio === "express") {
-//   costoEnvío = subtotalProductos * 0.07;
-// } else if (tipoEnvio === "standard") {
-//   costoEnvío = subtotalProductos * 0.05;
-// }
-
-// let total = subtotalProductos + costoEnvio;
-
-
-
