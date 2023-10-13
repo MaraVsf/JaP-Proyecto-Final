@@ -1,0 +1,70 @@
+#titulo-carrito{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 700;
+}
+ 
+ /* TABLA -----------------------------------------------------*/
+ table{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: #f1f1f17c;
+    width: 100%;
+    border-collapse: collapse;
+    border: 10px;
+    border-radius: 25px;
+    margin: 30px 0 50px 0;
+}
+
+th{  /* Titulos de la lista */
+    font-size: 17px;
+    color: #cfe9f5;
+    background-color: #3a3a3a;
+    padding: 20px 0;
+}
+
+#titulo-lista-imagen{
+    border-radius: 25px 0 0 0;
+}
+
+#titulo-lista-subtotal{
+    border-radius: 0 25px 0 0;
+}
+
+th, td { /* todos los elementos */
+    border-bottom: 1px solid #ffffff23;
+    height: 50px;
+}
+
+ /* Boton basura */
+img{
+    width: 100px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 5px;
+    margin: 13px 0;
+}
+
+input {
+    border-color: #ececec;
+    border-radius: 15px;
+    padding: 0 10px;
+    margin: 5px 0;
+}
+
+tr input {
+    width: 100px;
+    text-align: center;
+}
+
+#total-realizar-compra{
+    margin-top: 120px;
+}
+
+#precio-compra{
+    text-align: right;
+}
+
+#btn-realizar-compra {
+    width: 100%;
+}
