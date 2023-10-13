@@ -67,14 +67,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.location = "cart.html";
   }
 
-  //AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
-  let addCart = document.getElementById("addCart");
-  addCart.addEventListener("click", () => {
-    getProdId();
 
-    console.log("click");
-  });
-  console.log(getProdId);
+      //AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
+        let addCart = document.getElementById("addCart");
+        addCart.addEventListener("click", ()=> {
+          getProdId();
+         
+          console.log("click");
+        });
+       
+
 });
 
 function showInfoProducts(productData, comentData) {

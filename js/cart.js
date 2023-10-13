@@ -56,27 +56,79 @@ fetch(carritoendpoint)
     ).textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
   });
 
-  //AÑADIR MAS ELEMENTOS
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      let prodID = localStorage.getItem("prodID");
-  
-      let endpoint = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
-  
-      const res = await fetch(endpoint);
-      const productData = await res.json();
-  
-      //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
-      console.log(productData);
-  
-      let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
-      const comentRes = await fetch(comentEndpoint);
-      const comentData = await comentRes.json();
-      console.log(comentData);
-  
-      showInfoProducts(productData, comentData);
-    } catch (err) {
-      console.error(err);
+
+
+
+// Recuperar el carrito desde el almacenamiento local (si existe)
+let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    let prodID = localStorage.getItem("prodID");
+    let endpoint = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
+    const response = await fetch(endpoint);
+    const productCart = await response.json();
+
+    // Verificar si el producto ya está en el carrito
+    const productIndex = allProducts.findIndex(item => item.id === productCart.id);
+    
+    if (productIndex === -1) {
+      // El producto no está en el carrito, agregarlo y establecer su subtotal
+      productCart.subtotal = productCart.cost;
+      allProducts.push(productCart);
+
+      // Almacenar el carrito actualizado en el almacenamiento local
+      localStorage.setItem('allProducts', JSON.stringify(allProducts));
     }
-}); 
- 
+
+    // FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
+    console.log(productCart);
+
+    // Mostrar el carrito completo
+    console.log(allProducts);
+
+    updateCartTable();
+
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// Función para actualizar la tabla del carrito
+function updateCartTable() {
+  const cartTable = document.getElementById('cartTable');
+  const tbody = cartTable.querySelector('tbody');
+
+  // Limpiar el contenido existente de la tabla
+  tbody.innerHTML = '';
+
+  // Recorrer los productos en el carrito y agregar filas a la tabla
+  allProducts.forEach((product, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><img src="${product.images[0]}" alt="imagenDeProducto"/>${product.name}</td>
+      <td>${product.currency} ${product.cost}</td>
+      <td>Cantidad: <input type="number" class="cantProd" value="${product.count}" min="1" data-product-index="${index}" /></td>
+      <td>Subtotal: <span id="subProduct${index}">${product.currency}${product.subtotal}</span></td>
+    `;
+    tbody.appendChild(row);
+  });
+  
+
+  // Agrega un evento input a los elementos de cantidad
+  const cantidadInputs = document.querySelectorAll(".cantProd");
+  cantidadInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      const cantidad = parseInt(input.value);
+      const productoIndex = parseInt(input.dataset.productIndex);
+      const producto = allProducts[productoIndex];
+      const nuevoSubtotal = producto.cost * cantidad;
+      producto.subtotal = nuevoSubtotal;
+      producto.count = cantidad;
+      document.getElementById(`subProduct${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+      
+    });
+  });
+
+   
+}
