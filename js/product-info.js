@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
          
           console.log("click");
         });
-        console.log(getProdId);
+       
  
 });
 
