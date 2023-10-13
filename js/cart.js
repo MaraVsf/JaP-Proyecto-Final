@@ -8,75 +8,202 @@ fetch(carritoendpoint)
     }
     return response.json();
   })
-
   .then((data) => {
     let cartContainer = document.getElementById("cart-list");
     let cartProd = data.articles;
-    let cartContent = "";
-    let subtotal = 0;
-    function CalcularSubtotal(cantidad, precio) {
-      return cantidad * precio;
-    }
+
+    // Itera sobre los productos en el carrito y crea las filas de la tabla
     cartProd.forEach((producto, index) => {
+      let tr = document.createElement("tr");
       let cantidad = producto.count;
       let precio = producto.unitCost;
-      let subtotalProducto = CalcularSubtotal(cantidad, precio);
-      subtotal += subtotalProducto;
-      cartContent += `
-            <img src="${producto.image}" alt="imagenDeProducto" />
-            Producto: ${producto.name}, Precio: ${producto.currency} ${producto.unitCost}
-            Cantidad: <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
-            Subtotal: <span id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</span>
-            <br>
-        `;
+      let subtotalProducto = cantidad * precio;
+
+      tr.innerHTML = `
+        <td><img src="${producto.image}" alt="imagenDeProducto" /></td>
+        <td>${producto.name}</td>
+        <td>${producto.currency} ${precio}</td>
+        <td>
+          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
+        </td>
+        <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
+      `;
+      
+      cartContainer.appendChild(tr);
     });
 
-    cartContainer.innerHTML = cartContent;
+    // Obtén todos los elementos de cantidad y configura los event listeners
     let cantidadInputs = document.querySelectorAll(".cantProd");
     cantidadInputs.forEach((input) => {
       input.addEventListener("input", () => {
         let cantidad = parseInt(input.value);
         let productoIndex = parseInt(input.dataset.productIndex);
         let producto = cartProd[productoIndex];
-        let nuevoSubtotal = CalcularSubtotal(cantidad, producto.unitCost);
-        producto.subtotal = nuevoSubtotal;
+        let nuevoSubtotal = cantidad * producto.unitCost;
+
         producto.count = cantidad;
-        document.getElementById(
-          `subtotalProducto${productoIndex}`
-        ).textContent = `${producto.currency}${nuevoSubtotal}`;
-        subtotal = cartProd.reduce((total, prod) => total + prod.subtotal, 0);
-        document.getElementById(
-          "subtotal"
-        ).textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
+        producto.subtotal = nuevoSubtotal;
+
+        // Actualiza el subtotal en la fila de la tabla
+        document.getElementById(`subtotalProducto${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+
+        // Recalcula el subtotal total
+        let subtotal = cartProd.reduce((total, prod) => total + prod.subtotal, 0);
+        document.getElementById("subtotal").textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
       });
     });
-
-    document.getElementById(
-      "subtotal"
-    ).textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
+  })
+  .catch((error) => {
+    console.error("Error de conexión:", error);
   });
 
-  //AÑADIR MAS ELEMENTOS
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      let prodID = localStorage.getItem("prodID");
+
   
-      let endpoint = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
-  
-      const res = await fetch(endpoint);
-      const productData = await res.json();
-  
-      //FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
-      console.log(productData);
-  
-      let comentEndpoint = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
-      const comentRes = await fetch(comentEndpoint);
-      const comentData = await comentRes.json();
-      console.log(comentData);
-  
-      showInfoProducts(productData, comentData);
-    } catch (err) {
-      console.error(err);
+// Recuperar el carrito desde el almacenamiento local (si existe)
+let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    let prodID = localStorage.getItem("prodID");
+    let endpoint = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
+    const response = await fetch(endpoint);
+    const productCart = await response.json();
+
+    // Verificar si el producto ya está en el carrito
+    const productIndex = allProducts.findIndex(item => item.id === productCart.id);
+
+    if (productIndex === -1) {
+      // El producto no está en el carrito, agregarlo y establecer su subtotal
+      productCart.subtotal = productCart.cost;
+      allProducts.push(productCart);
+
+      // Almacenar el carrito actualizado en el almacenamiento local
+      localStorage.setItem('allProducts', JSON.stringify(allProducts));
     }
-}); 
- 
+
+
+    // FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
+    console.log(productCart);
+
+    // Mostrar el carrito completo
+    console.log(allProducts);
+
+    updateCartTable();
+
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// Función para actualizar la tabla del carrito
+function updateCartTable() {
+  const tbody = document.getElementById('cart-list');
+
+  // Limpiar el contenido existente de la tabla
+  tbody.innerHTML = '';
+
+  // Recorrer los productos en el carrito y agregar filas a la tabla
+  allProducts.forEach((product, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><img src="${product.images[0]}" alt="imagenDeProducto"/></td>
+      <td>${product.name}</td>
+      <td>${product.currency} ${product.cost}</td>
+      <td><input type="number" class="cantProd" value="1" min="1" data-product-index="${index}" /></td>
+      <td><span id="subProduct${index}">${product.currency}${product.subtotal}</span></td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  // Agrega un evento input a los elementos de cantidad
+  const cantidadInputs = document.querySelectorAll(".cantProd");
+  cantidadInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      const cantidad = parseInt(input.value);
+      const productoIndex = parseInt(input.dataset.productIndex);
+      const producto = allProducts[productoIndex];
+      const nuevoSubtotal = producto.cost * cantidad;
+      producto.subtotal = nuevoSubtotal;
+      producto.count = cantidad;
+      document.getElementById(`subProduct${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+      calcularTotal();
+    });
+  });
+}
+
+function calcularTotal() {
+  let total = 0;
+  let costoEnvio = 100;
+
+  allProducts.forEach((product) => {
+    if (product.currency == "USD") {
+      total += Math.round(product.subtotal * 39);
+    } else {
+      total += product.subtotal;
+    }
+  });
+
+  let inputsRadios = document.getElementsByName("envio");
+
+  for (let i = 0; i < inputsRadios.length; i++){
+    if (inputsRadios[i].checked && i == 0){
+      costoEnvio = 15;
+    } else if (inputsRadios[i].checked && i == 1){
+      costoEnvio = 7;
+    } else if (inputsRadios[i].checked && i == 2){
+      costoEnvio = 5;
+    };
+  };
+
+  let totalp = document.getElementById("total");
+  totalp.innerHTML = "Total: UYU " + (total + (parseInt(total * (costoEnvio/100))));
+};
+
+calcularTotal();
+
+Array.from(document.getElementsByName("envio")).forEach(element => {
+  element.addEventListener("click", () => {
+    calcularTotal();
+  });
+});
+
+Array.from(document.getElementsByClassName("cantProd")).forEach(element => {
+  element.addEventListener("input", () => {
+    calcularTotal();
+  });
+});
+
+//   let total = 0;
+
+//   // Recorre los productos y suma sus subtotales al total
+//   allProducts.forEach((product) => {
+//     total += product.subtotal;
+//   });
+
+//   return total;
+// }
+
+// // Llama a la función para calcular el total y actualiza la visualización
+// function actualizarTotal() {
+//   const total = calcularTotal();
+//   document.getElementById("total").textContent = `Total: ${allProducts[0].currency}${total}`;
+// }
+// actualizarTotal();
+
+// let subtotalProductos = allProducts.reduce((total, product) => total + product.subtotal, 0);
+
+// let tipoEnvio = document.getElementById("tipoEnvio").value;
+// let costoEnvio = 0;
+
+// if (tipoEnvio === "premium") {
+//   costoEnvío = subtotalProductos * 0.15;
+// } else if (tipoEnvio === "express") {
+//   costoEnvío = subtotalProductos * 0.07;
+// } else if (tipoEnvio === "standard") {
+//   costoEnvío = subtotalProductos * 0.05;
+// }
+
+// let total = subtotalProductos + costoEnvio;
+
+
+

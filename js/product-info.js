@@ -103,10 +103,10 @@ function showInfoProducts(productData, comentData) {
       <div class="col-5 caractproducto">
         <h2>${productData.name}</h2>
         <p class="descrip">${productData.description}</p>
-        <p id="precio">${productData.currency} ${productData.cost}</p>
+        <p id="precio"><span id="moneda-productinfo">${productData.currency}</span> ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
-       <button class="btn btn-danger" id="addCart" >Añadir al carrito</button>
+       <button class="btn btn-success" id="addCart" >Añadir al carrito</button>
       </div>
     </div>`;
 

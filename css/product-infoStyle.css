@@ -11,15 +11,16 @@
  }
 
 #precio {
-    margin-top: 14%;
+    margin-top: 10%;
     margin-bottom: 30px;
-    font-size: 1.5em;
-    font-weight: 600;
-    color: white;
-    background-color: black;
-    padding: 4px 13px;
+    font-size: 2.2em;
+    color: #0e2a5f;
     width: 45%;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+#moneda-productinfo {
+    font-size: 0.7em; 
 }
 
 /* Info del producto con su imagenes */
