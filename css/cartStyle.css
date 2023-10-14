@@ -62,9 +62,39 @@ tr input {
 }
 
 #precio-compra{
-    text-align: right;
+    background-color: #ececec;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 #btn-realizar-compra {
     width: 100%;
+}
+
+#totalp {
+    font-size: 0.8em;
+}
+
+@media only screen and (max-width: 991px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    #cart-shiping{
+        text-align: center;
+    }
+
+    .tipo-envio{
+        margin-top: 30px;
+    }
+
+    #total-realizar-compra{
+        margin-top: 50px;
+    }
+
+    #precio-compra{
+        text-align: center;
+        margin-bottom: 20px;
+    }
 }

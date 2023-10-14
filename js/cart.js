@@ -156,7 +156,7 @@ function calcularTotal() {
   };
 
   let totalp = document.getElementById("total");
-  totalp.innerHTML = "Total: UYU " + (total + (parseInt(total * (costoEnvio/100))));
+  totalp.innerHTML = `<span id="totalp">TOTAL: </span>UYU ${(total + (parseInt(total * (costoEnvio/100))))}`;
 };
 
 calcularTotal();
