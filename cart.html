@@ -14,6 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/cartStyle.css" rel="stylesheet" />
     <link rel="icon" href="img/img-iconos/jap-logo.ico" />
     <!-- nuevas fuentes de google fonts para el nav-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -235,7 +236,9 @@
           class="dropbtn"
           id="logoutDropdown"
           style="border-color: #53c0fb"
-        ></button>
+        >
+          <span id="usernameSpan"></span>
+        </button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
           <li class="menuCel"><a href="categories.html">Categorías</a></li>
@@ -250,33 +253,26 @@
     </nav>
     <main>
       <div class="container">
-        <div id="cart-list">
-        </div>
-
-        <div id="table">
-          <table id="cartTable">
-            <thead>
-              <tr>
-                <th>Nombre del Producto</th>
-                <th>Precio</th>
-                <!-- Agrega más encabezados según tus necesidades -->
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Aquí se agregarán las filas de productos -->
-            </tbody>
-          </table>
-          
-        </div>
-        <div id="cart-shiping" class="">
-          <h4>Tipo de envio</h4>
-          <div class="container row">
-            <span><input type="radio" />Premium 2 a 5 dias (15%)</span>
-            <span><input type="radio" />Express 5 a 8 dias (7%)</span>
-            <span><input type="radio" />Standard 12 a 15 dias (5%)</span>
+        <div class="row">
+          <h3 id="titulo-carrito">Realizar compra</h3>
+          <div class="tabla col-12">
+            <table id="cartTable">
+              <thead>
+                <tr>
+                  <th id="titulo-lista-imagen">IMAGEN</th>
+                  <th>PRODUCTO</th>
+                  <th>PRECIO</th>
+                  <th>CANTIDAD</th>
+                  <th id="titulo-lista-subtotal">SUBTOTAL</th>
+                </tr>
+              </thead>
+              <tbody id="cart-list"></tbody>
+            </table>
           </div>
-          <h4>Dirección de envio</h4>
-          <div class="">
+        </div>
+        <div id="cart-shiping" class="row">
+          <div class="col-4">
+            <h4>Dirección de envio</h4>
             <div class="">
               <label for="">Calle</label>
               <input type="text" />
@@ -290,8 +286,21 @@
               <input type="text" />
             </div>
           </div>
+          <div class="col-4 tipo-envio">
+            <h4>Tipo de envio</h4>
+            <div class="container row">
+              <span><input type="radio" name="envio"> Premium 2 a 5 dias (15%)</span>
+              <span><input type="radio" name="envio"> Express 5 a 8 dias (7%)</span>
+              <span><input type="radio" name="envio" checked> Standard 12 a 15 dias (5%)</span>
+            </div>
+          </div>
+          <div class="col-4" id="total-realizar-compra">
+            <div id="precio-compra">
+              <h5 id="total"></h5>
+            </div>
+            <button id="btn-realizar-compra" class="btn btn-success">Realizar compra</button>
+          </div>
         </div>
-      </div>
     </main>
     <footer class="text-muted">
       <div class="container" id="infEnd">
