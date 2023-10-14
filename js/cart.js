@@ -20,15 +20,15 @@ fetch(carritoendpoint)
       let subtotalProducto = cantidad * precio;
 
       tr.innerHTML = `
-        <td><img src="${producto.image}" alt="imagenDeProducto" /></td>
+        <td class="imgProd"><img src="${producto.image}" alt="imagenDeProducto" /></td>
         <td>${producto.name}</td>
         <td>${producto.currency} ${precio}</td>
         <td>
-          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
+          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
       `;
-      
+
       cartContainer.appendChild(tr);
     });
 
@@ -45,11 +45,18 @@ fetch(carritoendpoint)
         producto.subtotal = nuevoSubtotal;
 
         // Actualiza el subtotal en la fila de la tabla
-        document.getElementById(`subtotalProducto${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+        document.getElementById(
+          `subtotalProducto${productoIndex}`
+        ).textContent = `${producto.currency}${nuevoSubtotal}`;
 
         // Recalcula el subtotal total
-        let subtotal = cartProd.reduce((total, prod) => total + prod.subtotal, 0);
-        document.getElementById("subtotal").textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
+        let subtotal = cartProd.reduce(
+          (total, prod) => total + prod.subtotal,
+          0
+        );
+        document.getElementById(
+          "subtotal"
+        ).textContent = `Subtotal: ${data.articles[0].currency}${subtotal}`;
       });
     });
   })
@@ -58,7 +65,7 @@ fetch(carritoendpoint)
   });
 
 // Recuperar el carrito desde el almacenamiento local (si existe)
-let allProducts = JSON.parse(localStorage.getItem('allProducts')) || [];
+let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -68,7 +75,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productCart = await response.json();
 
     // Verificar si el producto ya está en el carrito
-    const productIndex = allProducts.findIndex(item => item.id === productCart.id);
+    const productIndex = allProducts.findIndex(
+      (item) => item.id === productCart.id
+    );
 
     if (productIndex === -1) {
       // El producto no está en el carrito, agregarlo y establecer su subtotal
@@ -76,9 +85,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       allProducts.push(productCart);
 
       // Almacenar el carrito actualizado en el almacenamiento local
-      localStorage.setItem('allProducts', JSON.stringify(allProducts));
+      localStorage.setItem("allProducts", JSON.stringify(allProducts));
     }
-
 
     // FUNCION QUE MUESTRA LA INFO DEL PRODUCTO
     console.log(productCart);
@@ -87,7 +95,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(allProducts);
 
     updateCartTable();
-
   } catch (err) {
     console.error(err);
   }
@@ -95,17 +102,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Función para actualizar la tabla del carrito
 function updateCartTable() {
-  const tbody = document.getElementById('cart-list');
-
+  const tbody = document.getElementById("cart-list");
 
   // Limpiar el contenido existente de la tabla
-  tbody.innerHTML = '';
+  tbody.innerHTML = "";
 
   // Recorrer los productos en el carrito y agregar filas a la tabla
   allProducts.forEach((product, index) => {
-    const row = document.createElement('tr');
+    const row = document.createElement("tr");
     row.innerHTML = `
-      <td><img src="${product.images[0]}" alt="imagenDeProducto"/></td>
+      <td class="imgProd"><img src="${product.images[0]}" alt="imagenDeProducto"/></td>
       <td>${product.name}</td>
       <td>${product.currency} ${product.cost}</td>
       <td><input type="number" class="cantProd" value="1" min="1" data-product-index="${index}" /></td>
@@ -124,7 +130,9 @@ function updateCartTable() {
       const nuevoSubtotal = producto.cost * cantidad;
       producto.subtotal = nuevoSubtotal;
       producto.count = cantidad;
-      document.getElementById(`subProduct${productoIndex}`).textContent = `${producto.currency}${nuevoSubtotal}`;
+      document.getElementById(
+        `subProduct${productoIndex}`
+      ).textContent = `${producto.currency}${nuevoSubtotal}`;
       calcularTotal();
     });
   });
@@ -145,29 +153,31 @@ function calcularTotal() {
 
   let inputsRadios = document.getElementsByName("envio");
 
-  for (let i = 0; i < inputsRadios.length; i++){
-    if (inputsRadios[i].checked && i == 0){
+  for (let i = 0; i < inputsRadios.length; i++) {
+    if (inputsRadios[i].checked && i == 0) {
       costoEnvio = 15;
-    } else if (inputsRadios[i].checked && i == 1){
+    } else if (inputsRadios[i].checked && i == 1) {
       costoEnvio = 7;
-    } else if (inputsRadios[i].checked && i == 2){
+    } else if (inputsRadios[i].checked && i == 2) {
       costoEnvio = 5;
-    };
-  };
+    }
+  }
 
   let totalp = document.getElementById("total");
-  totalp.innerHTML = `<span id="totalp">TOTAL: </span>UYU ${(total + (parseInt(total * (costoEnvio/100))))}`;
-};
+  totalp.innerHTML = `<span id="totalp">TOTAL: </span>UYU ${
+    total + parseInt(total * (costoEnvio / 100))
+  }`;
+}
 
 calcularTotal();
 
-Array.from(document.getElementsByName("envio")).forEach(element => {
+Array.from(document.getElementsByName("envio")).forEach((element) => {
   element.addEventListener("click", () => {
     calcularTotal();
   });
 });
 
-Array.from(document.getElementsByClassName("cantProd")).forEach(element => {
+Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
   element.addEventListener("input", () => {
     calcularTotal();
   });
