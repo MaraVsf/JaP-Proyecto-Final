@@ -1,3 +1,4 @@
+
 #titulo-carrito{
     text-align: center;
     margin-top: 50px;
@@ -5,11 +6,16 @@
 }
  
  /* TABLA -----------------------------------------------------*/
+ .table {
+    width: 100%; /* Ancho del 100% para llenar la pantalla */
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+}
+
  table{
     text-align: center;
     color: rgb(0, 0, 0);
     background-color: #f1f1f17c;
-    width: 100%;
+    width: auto;
     border-collapse: collapse;
     border: 10px;
     border-radius: 25px;
