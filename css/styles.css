@@ -21,7 +21,7 @@ nav {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
-  background-color: rgba(19, 116, 136, 0.5);
+  background-color: rgba(11, 153, 182, 0.5);
   box-shadow: 0px 1px 10px black;
   height: 70px;
   min-width: 100%;
@@ -92,7 +92,7 @@ nav {
 }
 
 .logo {
-  color: #f08206;
+  color: rgb(210,105,30);
   font-size: 35px;
   font-weight: 400;
   font-family: "Lilita One", cursive;
