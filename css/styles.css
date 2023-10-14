@@ -31,7 +31,6 @@ nav {
   text-decoration: none;
 }
 
-
 /* Botón del menú */
 .dropbtn {
   background-color: #caf0f8;
@@ -111,7 +110,6 @@ nav {
   transition: 0.3s;
 }
 
-
 /* ESTILOS DE LAS TARJETAS */
 .card {
   background-color: #fff;
@@ -174,8 +172,6 @@ nav {
 ::-webkit-scrollbar {
   display: none;
 }
-
-
 
 .texto-descripcion a {
   display: flex;
@@ -694,8 +690,3 @@ footer p {
     display: none;
   }
 }
-
-
-
-
-

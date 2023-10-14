@@ -259,8 +259,8 @@
             <table id="cartTable">
               <thead>
                 <tr>
-                  <th id="titulo-lista-imagen">IMAGEN</th>
-                  <th>PRODUCTO</th>
+                  <th id="titulo-lista-imagen" class="imgProd">IMAGEN</th>
+                  <th class="nomProd">PRODUCTO</th>
                   <th>PRECIO</th>
                   <th>CANTIDAD</th>
                   <th id="titulo-lista-subtotal">SUBTOTAL</th>
@@ -273,15 +273,15 @@
         <div id="cart-shiping" class="row">
           <div class="col-4">
             <h4>Dirección de envio</h4>
-            <div class="">
+            <div class="datosDirec">
               <label for="">Calle</label>
               <input type="text" />
             </div>
-            <div class="">
+            <div class="datosDirec">
               <label for="">Numero</label>
               <input type="text" />
             </div>
-            <div class="">
+            <div class="datosDirec">
               <label for="">Esquina</label>
               <input type="text" />
             </div>
@@ -296,7 +296,7 @@
           </div>
           <div class="col-4" id="total-realizar-compra">
             <div id="precio-compra">
-              <h5 id="total"></h5>
+              <h5 id="total" style="color: #161515;"></h5>
             </div>
             <button id="btn-realizar-compra" class="btn btn-success">Realizar compra</button>
           </div>
