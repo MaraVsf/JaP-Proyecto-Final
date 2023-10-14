@@ -61,6 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     localStorage.setItem("theme", "light");
   }
+  function removeVhClass() {
+    if (window.innerWidth < 768) { // Puedes ajustar el ancho máximo de la pantalla
+      const images = document.querySelectorAll('.carousel-item img');
+      images.forEach((img) => {
+        img.classList.remove('vh-100');
+      });
+    }
+  }
+  
+  // Agregar un controlador de evento de redimensionamiento
+  window.addEventListener('resize', removeVhClass);
+  
+  // Llamar a la función al cargar la página
+  removeVhClass();
 });
 
 // Obtén todos los elementos con la clase "light" y "light2"
@@ -106,4 +120,5 @@ const itemsCarrusel = document.getElementById("carouselChance")
 itemsCarrusel.addEventListener("click", ()=> {
   window.location = "categories.html";
   console.log("click")
-})
+});
+
