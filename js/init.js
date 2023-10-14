@@ -100,3 +100,10 @@ function setTheme() {
     }
   });
 }
+
+const itemsCarrusel = document.getElementById("carouselChance")
+
+itemsCarrusel.addEventListener("click", ()=> {
+  window.location = "categories.html";
+  console.log("click")
+})
