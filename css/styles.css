@@ -39,7 +39,6 @@ nav {
   font-family: "Merriweather", serif;
   font-weight: 600;
   font-size: 20px;
-  padding: 10px;
   border: "none";
   border-radius: 8px;
   cursor: pointer;
@@ -665,6 +664,7 @@ footer p {
     height: 50px;
     font-size: 10px;
     padding: 0 5px;
+    flex-direction: row;
   }
   .carousel-item img {
     height: 50vh !important;
