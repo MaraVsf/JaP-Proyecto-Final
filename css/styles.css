@@ -5,9 +5,12 @@
   font-family: "Verdana", serif !important;
 }
 
+ /* color del body */ 
 body {
   background-color: #d3d3d3;
 }
+
+
 
 /* Estilo del nav */
 
@@ -648,6 +651,7 @@ footer p {
   .menuCel {
     display: block;
   }
+ 
 }
 
 @media (max-width: 480px) {
@@ -670,6 +674,8 @@ footer p {
     height: 40vh;
    
   }
+
+ 
 }
 
 
@@ -696,8 +702,7 @@ footer p {
   #usernameSpan {
     display: none;
   }
- 
-  
+
 }
 
 

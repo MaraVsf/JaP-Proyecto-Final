@@ -61,20 +61,27 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     localStorage.setItem("theme", "light");
   }
-  function removeVhClass() {
-    if (window.innerWidth < 768) { // Puedes ajustar el ancho máximo de la pantalla
-      const images = document.querySelectorAll('.carousel-item img');
-      images.forEach((img) => {
-        img.classList.remove('vh-100');
-      });
-    }
+
+/*   FUNCION QUE LE QUITA UNA CLASE CUANDO SE REDUCE LA PANTALLA */
+function adjustVhClass() {
+  const images = document.querySelectorAll('.carousel-item img');
+  if (window.innerWidth < 768) { // Pantalla estrecha
+    images.forEach((img) => {
+      img.classList.remove('vh-100');
+    });
+  } else { // Pantalla ancha
+    images.forEach((img) => {
+      img.classList.add('vh-100');
+    });
   }
-  
-  // Agregar un controlador de evento de redimensionamiento
-  window.addEventListener('resize', removeVhClass);
-  
-  // Llamar a la función al cargar la página
-  removeVhClass();
+}
+
+// Agregar un controlador de evento de redimensionamiento
+window.addEventListener('resize', adjustVhClass);
+
+// Llamar a la función al cargar la página
+adjustVhClass();
+
 });
 
 // Obtén todos los elementos con la clase "light" y "light2"
