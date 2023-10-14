@@ -39,10 +39,17 @@ nav {
   font-weight: 600;
   font-size: 20px;
   padding: 10px;
-  padding-right: 20px;
   border: "none";
   border-radius: 8px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+/* Nombre del usuario */
+#usernameSpan {
+  display: block;
 }
 
 /* Contenido desplegable */
@@ -690,11 +697,6 @@ footer p {
     font-size: 26px;
     font-weight: 100px;
   }
-
-  .dropbtn {
-    width: 4em;
-    font-size: 20px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -714,6 +716,10 @@ footer p {
     display: flex;
     flex-direction: column-reverse;
     text-align: start;
+  }
+
+  #usernameSpan {
+    display: none;
   }
 }
 
