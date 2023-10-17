@@ -101,34 +101,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Borrar productos del carrito
-cartProd.forEach((producto, index) => {
-  let tr = document.createElement("tr");
-  let cantidad = producto.count;
-  let precio = producto.unitCost;
-  let subtotalProducto = cantidad * precio;  
+// cartProd.forEach((producto, index) => {
+//   let tr = document.createElement("tr");
+//   let cantidad = producto.count;
+//   let precio = producto.unitCost;
+//   let subtotalProducto = cantidad * precio;  
 
-  let botonBorrar = document.createElement("button");
-  botonBorrar.textContent = "Borrar";
-  botonBorrar.classList.add("borrar-producto");
-  botonBorrar.dataset.index = index;
+//   let botonBorrar = document.createElement("button");
+//   botonBorrar.textContent = "Borrar";
+//   botonBorrar.classList.add("borrar-producto");
+//   botonBorrar.dataset.index = index;
 
-  botonBorrar.addEventListener("click", function() {
+//   botonBorrar.addEventListener("click", function() {
     
-  let indiceBorrar = parseInt(this.dataset.index);
+//   let indiceBorrar = parseInt(this.dataset.index);
   
-  // Eliminar el producto del carrito
-  cartProd.splice(indiceBorrar, 1);
-    })
-    let tdBoton = document.createElement("td");
-    let botonBorrar = document.createElement("button");
-        botonBorrar.classList.add("btn", "btn-danger");
-    let spanPapelera = document.createElement("span");
-        spanPapelera.classList.add("bi", "bi-trash");
+//   // Eliminar el producto del carrito
+//   cartProd.splice(indiceBorrar, 1);
+//     })
+//     let tdBoton = document.createElement("td");
+//     let botonBorrar = document.createElement("button");
+//         botonBorrar.classList.add("btn", "btn-danger");
+//     let spanPapelera = document.createElement("span");
+//         spanPapelera.classList.add("bi", "bi-trash");
 
-botonBorrar.appendChild(spanPapelera);
-tdBoton.appendChild(botonBorrar);
-tr.appendChild(tdBoton);
-})
+// botonBorrar.appendChild(spanPapelera);
+// tdBoton.appendChild(botonBorrar);
+// tr.appendChild(tdBoton);
+// })
 
 // Función para actualizar la tabla del carrito
 function updateCartTable() {
