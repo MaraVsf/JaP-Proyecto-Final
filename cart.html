@@ -294,6 +294,89 @@
               <span><input type="radio" name="envio" checked> Standard 12 a 15 dias (5%)</span>
             </div>
           </div>
+          <div class="col-4 tipo-envio">
+            <h4>Metodo de pago</h4>
+            <div class="container row">
+              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#creditoDebito"> Credito o Debito</span>
+              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#Transf"> Transferencia bancaria</span>
+              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#redCobra"> Redes de cobranza</span>
+              <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="datosTarjeta">Datos de la tarjeta</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
+                          <input type="text" class="form-control" id="nTarjeta">
+                        </div>
+                        <div class="mb-3">
+                          <label for="message-text" class="col-form-label">CVV:</label>
+                          <input type="text" class="form-control" id="codigoSeg">
+                        </div>
+                        <div class="mb-3">
+                          <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
+                          <input type="date">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary">Guardar Datos</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="Transf" tabindex="-1" aria-labelledby="datosCuenta" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="datosCuenta">Datos de la transferencia</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
+                      <input type="text" class="form-control" id="nDeCuenta">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary">Guardar Datos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="redCobra" tabindex="-1" aria-labelledby="datosRedCobra" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="datosRedCobra">Datos de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
+                  <input type="text" class="form-control" id="nDeCI">
+                </form>
+                <p>Presentarse en cualquier red de cobranza con su número de documento</p>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar Datos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
           <div class="col-4" id="total-realizar-compra">
             <div id="precio-compra">
               <h5 id="total" style="color: #161515;"></h5>
