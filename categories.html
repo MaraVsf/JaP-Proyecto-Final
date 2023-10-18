@@ -29,7 +29,6 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
       rel="stylesheet"
     />
-  </head>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -250,7 +249,9 @@
     </div>
 
     <div class="dropdown">
-      <button class="dropbtn" id="logoutDropdown" style="border-color: #53c0fb"></button>
+      <button class="dropbtn" id="logoutDropdown" style="border-color: #53c0fb">
+        <span id="usernameSpan"></span>
+      </button>
       <ul class="dropdown-content">
         <li class="menuCel"><a href="index.html">Inicio</a></li>
         <li class="menuCel"><a href="categories.html">Categorías</a></li>
@@ -261,52 +262,42 @@
       </ul>
     </div>
   </nav>
-    <main class="pb-5">
-      <div class="text-center p-4">
-        <h2>Categorías</h2>
-        <p class="lead">Verás aquí todas las categorías del sitio.</p>
-      </div>
-      <div class="container">
+
+  <main class="pb-5">
+    <!-- Titulo -->
+    <section class="text-center p-4">
+      <h2>Categorías</h2>
+      <p class="lead">Verás aquí todas las categorías del sitio.</p>
+    </section>
+
+    <!-- Cuerpo -->
+    <section class="container">
+      <!-- Filtros -->
+      <article>
+        <!-- Filtros por orden alfabetico -->
         <div class="row">
-          <div class="col text-end">
+          <div class="col text-lg-end text-center m-5 mb-1">
             <div
-              class="btn-group btn-group-toggle mb-4"
-              data-bs-toggle="buttons"
-            >
-              <input
-                type="radio"
-                class="btn-check"
-                name="options"
-                id="sortAsc"
-              />
+            class="btn-group btn-group-toggle mb-4"
+            data-bs-toggle="buttons">
+              <input type="radio" class="btn-check" name="options" id="sortAsc"/>
               <label class="btn btn-light" for="sortAsc">A-Z</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="options"
-                id="sortDesc"
-              />
+              <input type="radio" class="btn-check" name="options" id="sortDesc"/>
               <label class="btn btn-light" for="sortDesc">Z-A</label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="options"
-                id="sortByCount"
-                checked
-              />
-              <label class="btn btn-light" for="sortByCount"
-                ><i class="fas fa-sort-amount-down mr-1"></i
-              ></label>
+              <input type="radio" class="btn-check" name="options" id="sortByCount" checked/>
+              <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
-                <p class="font-weight-normal text-end my-2">Cant.</p>
+
+        <!-- Filtros por cantidad -->
+        <div class="row justify-content-center m-5 mt-1">
+          <div class="offset-lg-6 col-lg-6 col-md-12 mb-1 container">
+            <div class="row container p-0 m-0 flex-column flex-md-row">
+              <div class="col text-md-end mb-2">
+                <p class="font-weight-normal">Cant.</p>
               </div>
-              <div class="col">
+              <div class="col-md-3 mb-2">
                 <input
                   class="form-control"
                   type="number"
@@ -314,7 +305,7 @@
                   id="rangeFilterCountMin"
                 />
               </div>
-              <div class="col">
+              <div class="col-md-3 mb-2">
                 <input
                   class="form-control"
                   type="number"
@@ -322,12 +313,12 @@
                   id="rangeFilterCountMax"
                 />
               </div>
-              <div class="col-3 p-0">
+              <div class="col-md-3 mb-2">
                 <div class="btn-group" role="group">
                   <button class="btn btn-light btn-block" id="rangeFilterCount">
                     Filtrar
                   </button>
-                  <button class="btn btn-link btn-sm" id="clearRangeFilter">
+                  <button class="btn btn-light btn-block" id="clearRangeFilter">
                     Limpiar
                   </button>
                 </div>
@@ -335,40 +326,42 @@
             </div>
           </div>
         </div>
-        <div>
-          <div
-            class="row"
-            id="cat-list-container"
-            style="margin-top: 50px; margin-left: 20px"
-          ></div>
-        </div>
-      </div>
-    </main>
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
-          Este sitio forma parte de
-          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
-          >
-        </p>
-      </div>
-    </footer>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      </article>
+        
+      <!-- Lista de Categorias -->
+      <article>
+        <div class="row" id="cat-list-container"><div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="text-muted">
+    <div class="container" id="infEnd">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>
+        Este sitio forma parte de
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+          >Jovenes a Programar</a
+        >
+      </p>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/categories.js"></script>
-    <script src="js/index.js"></script>
-  </body>
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/categories.js"></script>
+  <script src="js/index.js"></script>
+</body>
 </html>

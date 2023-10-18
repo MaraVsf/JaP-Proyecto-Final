@@ -27,7 +27,7 @@
 
   <body class="light">
     <nav>
-      <h2 class="logo">e-mercado</h2>
+      <a href="index.html" id="logoIndex"><h2 class="logo">e-mercado</h2></a>
       <ul class="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="categories.html">Categorías</a></li>
@@ -230,7 +230,9 @@
       </div>
   
       <div class="dropdown">
-        <button class="dropbtn" id="logoutDropdown" style="border-color: #53c0fb"></button>
+        <button class="dropbtn" id="logoutDropdown" style="border-color: #53c0fb">
+          <span id="usernameSpan"></span>
+        </button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
           <li class="menuCel"><a href="categories.html">Categorías</a></li>
@@ -259,6 +261,7 @@
                   id="productName"
                   value=""
                   name="productName"
+                  style="width: 300px;"
                 />
                 <div class="invalid-feedback">Ingresa un nombre</div>
               </div>
@@ -267,7 +270,7 @@
             <div class="row">
               <div class="col-md-8 order-md-1">
                 <label>Imágenes</label>
-                <div class="needsclick dz-clickable light" id="file-upload">
+                <div class="needsclick dz-clickable light" id="file-upload" style="width: 300px;">
                   <div class="dz-message needsclick">
                     Agregar fotos<br />
                   </div>
@@ -458,7 +461,7 @@
       </div>
     </div>
     <footer class="text-muted">
-      <div class="container">
+      <div class="container" id="infEnd">
         <p class="float-end">
           <a href="#">Volver arriba</a>
         </p>

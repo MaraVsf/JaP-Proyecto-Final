@@ -61,6 +61,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   botonEnv.addEventListener("click", () => {
     agregarComentario();
   });
+
+  //AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
+  function getProdId() {
+    window.location = "cart.html";
+  }
+
+
+      //AL HACER CLICK TE LLEVA AL CARRITO, toma el id del boton "añadir al carrito"
+        let addCart = document.getElementById("addCart");
+        addCart.addEventListener("click", ()=> {
+          getProdId();
+         
+          console.log("click");
+        });
+       
+
 });
 
 function showInfoProducts(productData, comentData) {
@@ -88,10 +104,11 @@ function showInfoProducts(productData, comentData) {
 
       <div class="col-5 caractproducto">
         <h2>${productData.name}</h2>
-        <p>${productData.description}</p>
-        <p id="precio">${productData.currency} ${productData.cost}</p>
+        <p class="descrip">${productData.description}</p>
+        <p id="precio"><span id="moneda-productinfo">${productData.currency}</span> ${productData.cost}</p>
         <p> <b>Categoria:</b> ${productData.category}</p>
         <p> <b>Cantidad de vendidos: </b> ${productData.soldCount}</p>
+       <button class="btn btn-success" id="addCart" >Añadir al carrito</button>
       </div>
     </div>`;
 
@@ -122,10 +139,9 @@ function showInfoProducts(productData, comentData) {
             <span class="star" data-index="4">&#9733;</span>
           </div>
         </label><br>
-        <label for="cuadrocom">
-          <textarea placeholder="Escriba aquí su comentario..." id="comment-nuevo"></textarea><br>
-        </label><br> 
+        <textarea class="form-control" id="comment-nuevo" placeholder="Escriba aquí su comentario..."></textarea><br>
         <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
+
     `;
   container.innerHTML = productInfoHTML;
   tucomentario.innerHTML = tucomentarioHTML;
@@ -157,7 +173,7 @@ function agregarComentario() {
     let estrellasHTML = generarEstrellas(puntaje);
 
     const nuevoComentario = `
-          <div class="comentario">
+          <div class="comentario" style="color: #161515;">
               <p class="puntuacion">${estrellasHTML}<span class="fecha"> ${fecha}</span></p>
               <p class="comentario-texto">${comentar}</p>
               <p class="usuario"><b>-${usuario}</b></p>
