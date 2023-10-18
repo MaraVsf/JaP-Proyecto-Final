@@ -310,22 +310,26 @@
                     <div class="modal-body">
                       <form>
                         <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Ingrese nombre del titular:</label>
+                          <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
-                          <input type="text" class="form-control" id="nTarjeta">
+                          <input type="number" class="form-control" id="nTarjeta">
                         </div>
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label">CVV:</label>
-                          <input type="text" class="form-control" id="codigoSeg">
+                          <input type="number" class="form-control" id="codigoSeg">
                         </div>
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
-                          <input type="date">
+                          <input type="date" id="fechaVto">
                         </div>
                       </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-primary">Guardar Datos</button>
+                      <button type="button" class="btn btn-primary" id="validacionTar">Guardar Datos</button>
                     </div>
                   </div>
                 </div>
@@ -343,12 +347,12 @@
                   <form>
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
-                      <input type="text" class="form-control" id="nDeCuenta">
+                      <input type="number" class="form-control" id="nDeCuenta" required>
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Guardar Datos</button>
+                  <button type="button" class="btn btn-primary" id="validacionCuenta">Guardar Datos</button>
                 </div>
               </div>
             </div>
@@ -366,11 +370,11 @@
               <form>
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
-                  <input type="text" class="form-control" id="nDeCI">
+                  <input type="number" class="form-control" id="nDeCI" required>
                 </form>
                 <p>Presentarse en cualquier red de cobranza con su número de documento</p>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar Datos</button>
+                <button type="button" class="btn btn-primary" id="validacionCI">Guardar Datos</button>
             </div>
           </div>
         </div>

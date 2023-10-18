@@ -212,3 +212,39 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
     calcularTotal();
   });
 });
+function validacionMetodoDePagoTar(){
+  let nroTarjeta=document.getElementById("nTarjeta").value;
+  let segCod=document.getElementById("codigoSeg").value;
+  let vtoTar=document.getElementById("fechaVto").value;
+  
+
+  if(nroTarjeta.length==16 && segCod.length==3 && vtoTar!==""){
+    alert("Tarjeta ingresada con exito")
+  }else{
+    alert("Ingrese todos los campos correctamente recuerde ingresar los 16 digitos de la tarjeta y que el codigo de seguridad contiene 3 numeros")
+  }
+}
+function validacionCuenta(){
+  let nroCuenta=document.getElementById("nDeCuenta");
+  let nroCI=document.getElementById("nDeCI");
+
+  if(nroCuenta.value!=="" || nroCI.value!==""){
+    alert("registro con exito");
+    nroCI.value=""
+    nroCuenta.value=""
+  }else{
+    alert("Ingrese los datos correctamente")
+  }
+}
+ let botonGuardarTar=document.getElementById("validacionTar");
+botonGuardarTar.addEventListener("click",()=>{
+  validacionMetodoDePagoTar();
+})
+let botonGuardarCuenta=document.getElementById("validacionCuenta");
+botonGuardarCuenta.addEventListener("click",()=>{
+  validacionCuenta()
+})
+let botonGuardarCI=document.getElementById("validacionCI");
+botonGuardarCI.addEventListener("click",()=>{
+  validacionCuenta()
+})
