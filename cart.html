@@ -271,35 +271,50 @@
           </div>
         </div>
         <div id="cart-shiping" class="row">
-          <div class="col-4">
-            <h4>Dirección de envio</h4>
+          <div class="col-4 seccion-shipping">
+            <h4>Dirección de envío</h4>
             <div class="datosDirec">
-              <label for="">Calle</label>
-              <input type="text" />
+              <input type="text" placeholder="Calle" />
             </div>
             <div class="datosDirec">
-              <label for="">Numero</label>
-              <input type="text" />
+              <input type="text" placeholder="Número" />
             </div>
             <div class="datosDirec">
-              <label for="">Esquina</label>
-              <input type="text" />
+              <input type="text" placeholder="Esquina" />
             </div>
           </div>
           <div class="col-4 tipo-envio">
-            <h4>Tipo de envio</h4>
-            <div class="container row">
-              <span><input type="radio" name="envio"> Premium 2 a 5 dias (15%)</span>
-              <span><input type="radio" name="envio"> Express 5 a 8 dias (7%)</span>
-              <span><input type="radio" name="envio" checked> Standard 12 a 15 dias (5%)</span>
+            <div class="seccion-shipping">
+              <h4>Tipo de envío</h4>
+              <div class="radio-container">
+                <input type="radio" id="premium" name="envio">
+                <label for="premium">Premium 2 a 5 días (15%)</label>
+              </div>
+              <div class="radio-container">
+                <input type="radio" id="express" name="envio">
+                <label for="express">Express 5 a 8 días (7%)</label>
+              </div>
+              <div class="radio-container">
+                <input type="radio" id="standard" name="envio" checked>
+                <label for="standard">Standard 12 a 15 días (5%)</label>
+              </div>              
             </div>
           </div>
           <div class="col-4 tipo-envio">
-            <h4>Metodo de pago</h4>
-            <div class="container row">
-              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#creditoDebito"> Credito o Debito</span>
-              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#Transf"> Transferencia bancaria</span>
-              <span><input type="radio" name="pago" data-bs-toggle="modal" data-bs-target="#redCobra"> Redes de cobranza</span>
+            <div class="seccion-shipping">
+              <h4>Método de pago</h4>
+              <div class="radio-container">
+                <input type="radio" name="pago" id="credito-debito" data-bs-toggle="modal" data-bs-target="#creditoDebito">
+                <label for="credito-debito">Credito o Debito</label>
+              </div>
+              <div class="radio-container">
+                <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf">
+                <label for="transf">Transferencia bancaria</label>
+              </div>
+              <div class="radio-container">
+                <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra"></span>
+                <label for="red-cobra">Redes de cobranza</label>
+              </div>
               <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -348,6 +363,7 @@
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
                       <input type="number" class="form-control" id="nDeCuenta" required>
+                    </div>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -358,36 +374,36 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal fade" id="redCobra" tabindex="-1" aria-labelledby="datosRedCobra" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="datosRedCobra">Datos de Pago</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
-                  <input type="number" class="form-control" id="nDeCI" required>
+        <div class="modal fade" id="redCobra" tabindex="-1" aria-labelledby="datosRedCobra" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="datosRedCobra">Datos de Pago</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
+                    <input type="number" class="form-control" id="nDeCI" required>
+                  </div>
                 </form>
                 <p>Presentarse en cualquier red de cobranza con su número de documento</p>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="validacionCI">Guardar Datos</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-          <div class="col-4" id="total-realizar-compra">
+        <div class="row">
+          <div class="col-12" id="total-realizar-compra">
             <div id="precio-compra">
               <h5 id="total" style="color: #161515;"></h5>
             </div>
             <button id="btn-realizar-compra" class="btn btn-success">Realizar compra</button>
           </div>
         </div>
+      </div>
     </main>
     <footer class="text-muted">
       <div class="container" id="infEnd">
