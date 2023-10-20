@@ -283,69 +283,65 @@
               <input type="text" placeholder="Esquina" />
             </div>
           </div>
-          <div class="col-4 tipo-envio">
-            <div class="seccion-shipping">
-              <h4>Tipo de envío</h4>
-              <div class="radio-container">
-                <input type="radio" id="premium" name="envio">
-                <label for="premium">Premium 2 a 5 días (15%)</label>
-              </div>
-              <div class="radio-container">
-                <input type="radio" id="express" name="envio">
-                <label for="express">Express 5 a 8 días (7%)</label>
-              </div>
-              <div class="radio-container">
-                <input type="radio" id="standard" name="envio" checked>
-                <label for="standard">Standard 12 a 15 días (5%)</label>
-              </div>              
+          <div class="col-4 tipo-envio seccion-shipping">
+            <h4>Tipo de envío</h4>
+            <div class="radio-container">
+              <input type="radio" id="premium" name="envio">
+              <label for="premium">Premium 2 a 5 días (15%)</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="express" name="envio">
+              <label for="express">Express 5 a 8 días (7%)</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="standard" name="envio" checked>
+              <label for="standard">Standard 12 a 15 días (5%)</label>
             </div>
           </div>
-          <div class="col-4 tipo-envio">
-            <div class="seccion-shipping">
-              <h4>Método de pago</h4>
-              <div class="radio-container">
-                <input type="radio" name="pago" id="credito-debito" data-bs-toggle="modal" data-bs-target="#creditoDebito">
-                <label for="credito-debito">Credito o Debito</label>
-              </div>
-              <div class="radio-container">
-                <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf">
-                <label for="transf">Transferencia bancaria</label>
-              </div>
-              <div class="radio-container">
-                <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra"></span>
-                <label for="red-cobra">Redes de cobranza</label>
-              </div>
-              <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="datosTarjeta">Datos de la tarjeta</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="mb-3">
-                          <label for="recipient-name" class="col-form-label">Ingrese nombre del titular:</label>
-                          <input type="text" class="form-control" id="nombre" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
-                          <input type="number" class="form-control" id="nTarjeta">
-                        </div>
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label">CVV:</label>
-                          <input type="number" class="form-control" id="codigoSeg">
-                        </div>
-                        <div class="mb-3">
-                          <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
-                          <input type="date" id="fechaVto">
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-primary" id="validacionTar">Guardar Datos</button>
-                    </div>
+          <div class="col-4 tipo-envio seccion-shipping">
+            <h4>Método de pago</h4>
+            <div class="radio-container">
+              <input type="radio" name="pago" id="credito-debito" data-bs-toggle="modal" data-bs-target="#creditoDebito">
+              <label for="credito-debito">Credito o Debito</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf">
+              <label for="transf">Transferencia bancaria</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra"></span>
+              <label for="red-cobra">Redes de cobranza</label>
+            </div>
+            <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="datosTarjeta">Datos de la tarjeta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ingrese nombre del titular:</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
+                        <input type="number" class="form-control" id="nTarjeta">
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">CVV:</label>
+                        <input type="number" class="form-control" id="codigoSeg">
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
+                        <input type="date" id="fechaVto">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="validacionTar">Guardar Datos</button>
                   </div>
                 </div>
               </div>
