@@ -170,14 +170,14 @@ function updateCartTable() {
 
 //CALCULAR TOTAL
 function calcularTotal() {
-  let total = 0;
+  let subtotal = 0;
   let costoEnvio = 100;
 
   allProducts.forEach((product) => {
-    if (product.currency == "USD") {
-      total += Math.round(product.subtotal * 39);
+    if (product.currency == "UYU") {
+      subtotal += Math.round(product.subtotal / 39);
     } else {
-      total += product.subtotal;
+      subtotal += product.subtotal;
     }
   });
 
@@ -193,10 +193,20 @@ function calcularTotal() {
     }
   }
 
-  let totalp = document.getElementById("total");
-  totalp.innerHTML = `<span id="totalp">TOTAL: </span>UYU ${
-    total + parseInt(total * (costoEnvio / 100))
+  let total = document.getElementById("total");
+  total.innerHTML = `TOTAL: USD ${
+    subtotal + parseInt(subtotal * (costoEnvio / 100))
   }`;
+
+  let subtotalp = document.getElementById("subtotal");
+  subtotalp.innerHTML = `<span id="totalp">Subtotal: USD ${
+    subtotal
+  }</span>`
+
+  let enviop = document.getElementById("envio");
+  enviop.innerHTML = `<span id="totalp">Envío: USD ${
+    costoEnvio
+  }</span>`
 }
 
 calcularTotal();
@@ -212,10 +222,13 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
     calcularTotal();
   });
 });
+
+
+//Validacion de tarjeta
 function validacionMetodoDePagoTar(){
-  let nroTarjeta=document.getElementById("nTarjeta").value;
-  let segCod=document.getElementById("codigoSeg").value;
-  let vtoTar=document.getElementById("fechaVto").value;
+  let nroTarjeta = document.getElementById("nTarjeta").value;
+  let segCod = document.getElementById("codigoSeg").value;
+  let vtoTar = document.getElementById("fechaVto").value;
   
 
   if(nroTarjeta.length==16 && segCod.length==3 && vtoTar!==""){
