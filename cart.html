@@ -29,6 +29,30 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
       rel="stylesheet"
     />
+    <style>
+      input:focus{
+        outline: none;
+      }
+
+      input:valid {
+        border: 1px solid green;
+      }
+
+      input:invalid {
+        border: 1px solid red;
+      }
+
+      input:invalid + .error {
+        display: block;
+      }
+
+      .error {
+        display: none;
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    </style>
   </head>
 
   <body class="light">
@@ -252,7 +276,7 @@
       </div>
     </nav>
     <main>
-      <div class="container">
+      <div class="container" >
         <div class="row">
           <h3 id="titulo-carrito">Realizar compra</h3>
           <div class="tabla col-12">
@@ -274,13 +298,16 @@
           <div class="col-4 seccion-shipping">
             <h4>Dirección de envío</h4>
             <div class="datosDirec">
-              <input type="text" placeholder="Calle" />
+              <input type="text" placeholder="Calle" id="calle" required/>
+              <span class="error">Debe ingresar una calle</span>
             </div>
             <div class="datosDirec">
-              <input type="text" placeholder="Número" />
+              <input type="text" placeholder="Número" id="numero" required/>
+              <span class="error">Debe ingresar el numero de la casa</span>
             </div>
             <div class="datosDirec">
-              <input type="text" placeholder="Esquina" />
+              <input type="text" placeholder="Esquina" id="esquina" required />
+              <span class="error">Debe ingresar el nombre de la esquina</span>
             </div>
           </div>
           <div class="col-4 tipo-envio seccion-shipping">
@@ -305,11 +332,11 @@
               <label for="credito-debito">Credito o Debito</label>
             </div>
             <div class="radio-container">
-              <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf">
+              <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf" >
               <label for="transf">Transferencia bancaria</label>
             </div>
             <div class="radio-container">
-              <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra"></span>
+              <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra" ></span>
               <label for="red-cobra">Redes de cobranza</label>
             </div>
             <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
@@ -327,15 +354,15 @@
                       </div>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
-                        <input type="number" class="form-control" id="nTarjeta">
+                        <input type="number" class="form-control" id="nTarjeta" required>
                       </div>
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">CVV:</label>
-                        <input type="number" class="form-control" id="codigoSeg">
+                        <input type="number" class="form-control" id="codigoSeg" required> 
                       </div>
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
-                        <input type="date" id="fechaVto">
+                        <input type="date" id="fechaVto" required>
                       </div>
                     </form>
                   </div>
@@ -398,10 +425,10 @@
               <h5 id="envio" style="color: #161515;"></h5>
               <h5 id="total" style="color: #161515;"></h5>
             </div>
-            <button id="btn-realizar-compra" class="btn btn-success">Realizar compra</button>
+            <button id="btn-realizar-compra" class="btn btn-success" name="button">Realizar compra</button>
           </div>
         </div>
-      </div>
+    </div>
     </main>
     <footer class="text-muted">
       <div class="container" id="infEnd">
