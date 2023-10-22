@@ -24,7 +24,7 @@ fetch(carritoendpoint)
         <td>${producto.name}</td>
         <td>${producto.currency} ${precio}</td>
         <td>
-          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
+          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
       `;
@@ -226,25 +226,34 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
 
 //Validacion de tarjeta
 function validacionMetodoDePagoTar(){
-  let nroTarjeta = document.getElementById("nTarjeta").value;
-  let segCod = document.getElementById("codigoSeg").value;
-  let vtoTar = document.getElementById("fechaVto").value;
+  let nroTarjeta = document.getElementById("nTarjeta");
+  let segCod = document.getElementById("codigoSeg");
+  let vtoTar = document.getElementById("fechaVto");
+  let titularName = document.getElementById("nombre");
   
 
-  if(nroTarjeta.length==16 && segCod.length==3 && vtoTar!==""){
-    alert("Tarjeta ingresada con exito")
+  if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar!==""){
+   alert("Tarjeta ingresada con exito")
+   /* nroTarjeta.value = "";
+   segCod.value = "";
+   titularName.value = "";
+   vtoTar.value = "";
+    */
   }else{
     alert("Ingrese todos los campos correctamente recuerde ingresar los 16 digitos de la tarjeta y que el codigo de seguridad contiene 3 numeros")
+   
   }
 }
+
 function validacionCuenta(){
   let nroCuenta=document.getElementById("nDeCuenta");
   let nroCI=document.getElementById("nDeCI");
 
   if(nroCuenta.value!=="" || nroCI.value!==""){
     alert("registro con exito");
-    nroCI.value=""
-    nroCuenta.value=""
+    nroCI.value="";
+    nroCuenta.value="";
+    vtoTar.value = "";
   }else{
     alert("Ingrese los datos correctamente")
   }
@@ -260,4 +269,34 @@ botonGuardarCuenta.addEventListener("click",()=>{
 let botonGuardarCI=document.getElementById("validacionCI");
 botonGuardarCI.addEventListener("click",()=>{
   validacionCuenta()
-})
+});
+
+/* Avisar de errores y compra exitosa */
+
+const button = document.getElementById("btn-realizar-compra");
+
+button.addEventListener("click", function() {
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+  const cantProdInputs = document.getElementsByClassName("cantProd");
+  let isValid = true;
+
+  // Verifica si alguno de los campos "cantProd" tiene un valor de 0
+  for (let i = 0; i < cantProdInputs.length; i++) {
+    if (parseInt(cantProdInputs[i].value, 10) === 0) {
+      isValid = false;
+      break; // Sal del bucle tan pronto como encuentres un campo con valor 0
+    }
+  }
+
+  if (calle.trim() === "" || numero.trim() === "" || esquina.trim() === "") {
+    alert("Por favor, complete todos los campos.");
+  } else if (!isValid) {
+    alert("La cantidad de productos no puede ser 0.");
+  } else {
+    alert("Su compra ha sido exitosa");
+  }
+});
+
+
