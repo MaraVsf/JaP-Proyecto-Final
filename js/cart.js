@@ -24,7 +24,7 @@ fetch(carritoendpoint)
         <td>${producto.name}</td>
         <td>${producto.currency} ${precio}</td>
         <td>
-          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
+          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
       `;
@@ -225,38 +225,39 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
 
 
 //Validacion de tarjeta
+
+let tarjetaVal = false;
+let cuentaVal = false;
+
 function validacionMetodoDePagoTar(){
-  let nroTarjeta = document.getElementById("nTarjeta");
-  let segCod = document.getElementById("codigoSeg");
-  let vtoTar = document.getElementById("fechaVto");
-  let titularName = document.getElementById("nombre");
+  let nroTarjeta = document.getElementById("nTarjeta").value;
+  let segCod = document.getElementById("codigoSeg").value;
+  let vtoTar = document.getElementById("fechaVto").value;
   
 
-  if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar!==""){
-   alert("Tarjeta ingresada con exito")
-   /* nroTarjeta.value = "";
-   segCod.value = "";
-   titularName.value = "";
-   vtoTar.value = "";
-    */
+  if(nroTarjeta.length==16 && segCod.length==3 && vtoTar!==""){
+    alert("Tarjeta ingresada con exito")
+    tarjetaVal = true;
   }else{
     alert("Ingrese todos los campos correctamente recuerde ingresar los 16 digitos de la tarjeta y que el codigo de seguridad contiene 3 numeros")
-   
+    tarjetaVal = false;
   }
+  actualizarBotonCompra();
 }
-
 function validacionCuenta(){
   let nroCuenta=document.getElementById("nDeCuenta");
   let nroCI=document.getElementById("nDeCI");
 
   if(nroCuenta.value!=="" || nroCI.value!==""){
     alert("registro con exito");
-    nroCI.value="";
-    nroCuenta.value="";
-    vtoTar.value = "";
+    nroCI.value=""
+    nroCuenta.value=""
+    cuentaVal = true;
   }else{
     alert("Ingrese los datos correctamente")
+    cuentaVal = false;
   }
+  actualizarBotonCompra();
 }
  let botonGuardarTar=document.getElementById("validacionTar");
 botonGuardarTar.addEventListener("click",()=>{
@@ -269,34 +270,72 @@ botonGuardarCuenta.addEventListener("click",()=>{
 let botonGuardarCI=document.getElementById("validacionCI");
 botonGuardarCI.addEventListener("click",()=>{
   validacionCuenta()
-});
+})
 
-/* Avisar de errores y compra exitosa */
+// Finalizar compra con validaciones //
+document.addEventListener("DOMContentLoaded", () => {
+  let direccionInput = document.querySelector("input[placeholder='Calle']");
+  let numeroInput = document.querySelector("input[placeholder='Número']");
+  let esquinaInput = document.querySelector("input[placeholder='Esquina']");
+  let envioRadios = document.getElementsByName("envio");
+  let pagoRadios = document.getElementsByName("pago");
+  let realizarCompraBtn = document.getElementById("btn-realizar-compra");
 
-const button = document.getElementById("btn-realizar-compra");
+  function validarDireccion() {
+    return direccionInput.value.trim() !== "" && numeroInput.value.trim() !== "" && esquinaInput.value.trim() !== "";
+  }
 
-button.addEventListener("click", function() {
-  const calle = document.getElementById("calle").value;
-  const numero = document.getElementById("numero").value;
-  const esquina = document.getElementById("esquina").value;
-  const cantProdInputs = document.getElementsByClassName("cantProd");
-  let isValid = true;
+  function validarEnvio() {
+    for (const radio of envioRadios) {
+      if (radio.checked) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-  // Verifica si alguno de los campos "cantProd" tiene un valor de 0
-  for (let i = 0; i < cantProdInputs.length; i++) {
-    if (parseInt(cantProdInputs[i].value, 10) === 0) {
-      isValid = false;
-      break; // Sal del bucle tan pronto como encuentres un campo con valor 0
+  function validarPago() {
+    for (const radio of pagoRadios) {
+      if (radio.checked) {
+        if (radio.id === "credito-debito") {
+          // Si es tarjeta de crédito o débito //
+          return tarjetaVal;
+        } else if (radio.id === "transf") {
+          // Si es transferencia bancaria //
+          return cuentaVal;
+        } else if (radio.id === "red-cobra") {
+          // Si es redes de cobranza //
+          return cuentaVal;
+        }
+      }
+    }
+    return false;
+  }
+
+  function actualizarBotonCompra() {
+    let direccionValida = validarDireccion();
+    let envioValido = validarEnvio();
+    let pagoValido = validarPago();
+
+    if (direccionValida && envioValido && pagoValido) {
+      realizarCompraBtn.disabled = false;
+    } else {
+      realizarCompraBtn.disabled = true;
     }
   }
 
-  if (calle.trim() === "" || numero.trim() === "" || esquina.trim() === "") {
-    alert("Por favor, complete todos los campos.");
-  } else if (!isValid) {
-    alert("La cantidad de productos no puede ser 0.");
-  } else {
-    alert("Su compra ha sido exitosa");
+  // addEventListeners para los campos de dirección, métodos de envío y métodos de pago //
+  direccionInput.addEventListener("input", actualizarBotonCompra);
+  numeroInput.addEventListener("input", actualizarBotonCompra);
+  esquinaInput.addEventListener("input", actualizarBotonCompra);
+  for (const radio of envioRadios) {
+    radio.addEventListener("change", actualizarBotonCompra);
   }
+  for (const radio of pagoRadios) {
+    radio.addEventListener("change", actualizarBotonCompra);
+  }
+
+  actualizarBotonCompra();
 });
 
 
