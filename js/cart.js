@@ -265,7 +265,7 @@ function validarPago() {
       if (radio.id === "credito-debito" && nroTarjeta.value !== "" && segCod.value !== "" && vtoTar.value !== "" && titularName.value !== "") {
         // Si es tarjeta de crédito o débito //
         return true;
-      } else if (radio.id === "transf" && nDeCuenta.value !== "") {
+      } else if (radio.id === "transf" && nDeCuenta.value !== "" && nDeCuenta.value.length >= 10) {
         // Si es transferencia bancaria //
         return true;
       } else if (radio.id === "red-cobra" && nDeCI.value !== "" && nDeCI.value.length === 8) {
@@ -276,10 +276,10 @@ function validarPago() {
       // Alertas personalizadas para cada caso
       if (radio.id === "credito-debito" && (nroTarjeta.value === "" || segCod.value === "" || vtoTar.value === "" || titularName.value === "")) {
         alert("Por favor, complete todos los campos de la tarjeta.");
-      } else if (radio.id === "transf" && nDeCuenta.value === "") {
-        alert("Por favor, ingrese el número de cuenta.");
+      } else if (radio.id === "transf" && nDeCuenta.value === "" ||  nDeCuenta.value.length <= 10) {
+        alert("Por favor, ingrese el número de cuenta correcto.");
       } else if (radio.id === "red-cobra" && (nDeCI.value === "" || nDeCI.value.length !== 8)) {
-        alert("Por favor, ingrese un número de CI válido.");
+        alert("Por favor, ingrese un número de CI válido de 8 digitos.");
       }
     }
   }
