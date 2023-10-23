@@ -24,7 +24,7 @@ fetch(carritoendpoint)
         <td>${producto.name}</td>
         <td>${producto.currency} ${precio}</td>
         <td>
-          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}" />
+          <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
       `;
@@ -223,15 +223,16 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
   });
 });
 
+let nroTarjeta = document.getElementById("nTarjeta");
+let segCod = document.getElementById("codigoSeg");
+let vtoTar = document.getElementById("fechaVto");
+let titularName = document.getElementById("nombre");
+let nDeCuenta = document.getElementById("nDeCuenta");
+let nDeCI = document.getElementById("nDeCI");
 
 //Validacion de tarjeta
 function validacionMetodoDePagoTar(){
-  let nroTarjeta = document.getElementById("nTarjeta");
-  let segCod = document.getElementById("codigoSeg");
-  let vtoTar = document.getElementById("fechaVto");
-  let titularName = document.getElementById("nombre");
-  
-
+ 
   if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar!==""){
    alert("Tarjeta ingresada con exito")
    /* nroTarjeta.value = "";
@@ -245,9 +246,50 @@ function validacionMetodoDePagoTar(){
   }
 }
 
+function validarEnvio() {
+  const envioRadios = document.getElementsByName("envio");
+  for (const radio of envioRadios) {
+    if (radio.checked) {
+      return true; // Se seleccionó al menos una opción de envío
+    }
+  }
+  return false; // Ninguna opción de envío seleccionada
+}
+
+
+
+function validarPago() {
+  const pagoRadios = document.getElementsByName("pago");
+  for (const radio of pagoRadios) {
+    if (radio.checked) {
+      if (radio.id === "credito-debito" && nroTarjeta.value !== "" && segCod.value !== "" && vtoTar.value !== "" && titularName.value !== "") {
+        // Si es tarjeta de crédito o débito //
+        return true;
+      } else if (radio.id === "transf" && nDeCuenta.value !== "") {
+        // Si es transferencia bancaria //
+        return true;
+      } else if (radio.id === "red-cobra" && nDeCI.value !== "" && nDeCI.value.length === 8) {
+        // Si es redes de cobranza //
+        return true;
+      }
+      
+      // Alertas personalizadas para cada caso
+      if (radio.id === "credito-debito" && (nroTarjeta.value === "" || segCod.value === "" || vtoTar.value === "" || titularName.value === "")) {
+        alert("Por favor, complete todos los campos de la tarjeta.");
+      } else if (radio.id === "transf" && nDeCuenta.value === "") {
+        alert("Por favor, ingrese el número de cuenta.");
+      } else if (radio.id === "red-cobra" && (nDeCI.value === "" || nDeCI.value.length !== 8)) {
+        alert("Por favor, ingrese un número de CI válido.");
+      }
+    }
+  }
+  return false;
+}
+
+
 function validacionCuenta(){
-  let nroCuenta=document.getElementById("nDeCuenta");
-  let nroCI=document.getElementById("nDeCI");
+  let nroCuenta = document.getElementById("nDeCuenta");
+  let nroCI = document.getElementById("nDeCI");
 
   if(nroCuenta.value!=="" || nroCI.value!==""){
     alert("registro con exito");
@@ -258,18 +300,14 @@ function validacionCuenta(){
     alert("Ingrese los datos correctamente")
   }
 }
- let botonGuardarTar=document.getElementById("validacionTar");
+ 
+let botonGuardarTar = document.getElementById("validacionTar");
 botonGuardarTar.addEventListener("click",()=>{
   validacionMetodoDePagoTar();
-})
-let botonGuardarCuenta=document.getElementById("validacionCuenta");
-botonGuardarCuenta.addEventListener("click",()=>{
-  validacionCuenta()
-})
-let botonGuardarCI=document.getElementById("validacionCI");
-botonGuardarCI.addEventListener("click",()=>{
-  validacionCuenta()
 });
+
+
+
 
 /* Avisar de errores y compra exitosa */
 
@@ -281,6 +319,7 @@ button.addEventListener("click", function() {
   const esquina = document.getElementById("esquina").value;
   const cantProdInputs = document.getElementsByClassName("cantProd");
   let isValid = true;
+  let pagoValid = validarPago();
 
   // Verifica si alguno de los campos "cantProd" tiene un valor de 0
   for (let i = 0; i < cantProdInputs.length; i++) {
@@ -290,13 +329,20 @@ button.addEventListener("click", function() {
     }
   }
 
-  if (calle.trim() === "" || numero.trim() === "" || esquina.trim() === "") {
+  if (calle.trim() === "" || numero.trim() === "" || esquina.trim() === "" || !pagoValid ) {
     alert("Por favor, complete todos los campos.");
   } else if (!isValid) {
     alert("La cantidad de productos no puede ser 0.");
   } else {
     alert("Su compra ha sido exitosa");
   }
+
+ 
 });
+
+
+
+
+
 
 
