@@ -346,7 +346,7 @@
                     <h5 class="modal-title" id="datosTarjeta">Datos de la tarjeta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body datosStyle">
                     <form>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Ingrese nombre del titular:</label>
@@ -381,7 +381,7 @@
                   <h5 class="modal-title" id="datosCuenta">Datos de la transferencia</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body datosStyle">
                   <form>
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
@@ -399,12 +399,12 @@
         </div>
         <div class="modal fade" id="redCobra" tabindex="-1" aria-labelledby="datosRedCobra" aria-hidden="true">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content datosPago">
               <div class="modal-header">
                 <h5 class="modal-title" id="datosRedCobra">Datos de Pago</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body datosStyle">
                 <form>
                   <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
@@ -412,8 +412,11 @@
                   </div>
                 </form>
                 <p>Presentarse en cualquier red de cobranza con su número de documento</p>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="validacionCI">Guardar Datos</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="validacionCI">Guardar Datos</button>
+                </div>
+                
               </div>
             </div>
           </div>
