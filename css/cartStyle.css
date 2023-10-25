@@ -6,7 +6,7 @@
 
 /* TABLA -----------------------------------------------------*/
 .table {
-  width: 100%; 
+  width: 100%;
   overflow-x: auto;
 }
 
@@ -37,7 +37,8 @@ table {
   border-radius: 0 25px 0 0;
 }
 
-#cartTable th, td {
+#cartTable th,
+td {
   /* todos los elementos */
   border-bottom: 1px solid #ffffff23;
   height: 50px;
@@ -103,72 +104,81 @@ tr input {
 
 /*Shipping seccion metodos-------------------*/
 #cart-shiping {
-    display: flex;
-    background-color: #f1f1f17c;
-    padding: 30px 20px;
-    border-radius: 25px;
+  display: flex;
+  background-color: #f1f1f17c;
+  padding: 30px 20px;
+  border-radius: 25px;
+  color: #212529;
+}
+
+.datosPago {
+  color: #212529;
 }
 
 .seccion-shipping {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-left: 5px;
-    border-color: #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 5px;
+  border-color: #3a3a3a;
 }
 
 /*Radio*/
 .radio-container {
-    display: flex;
-    align-items: center;
-    margin: 5px;
-    background-color: white;
-    border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  background-color: white;
+  border-radius: 20px;
 }
-  
+
 input[type="radio"] {
-    opacity: 0;
-    position: absolute;
+  opacity: 0;
+  position: absolute;
 }
-  
+
 .tipo-envio label {
-    text-align: center;
-    padding: 5px 15px;
-    border-radius: 20px;
-    width: 290px;
-    transition: border-color 0.3s;
-    cursor: pointer;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 20px;
+  width: 290px;
+  transition: border-color 0.3s;
+  cursor: pointer;
 }
-  
+
 input[type="radio"]:checked + label {
-    border: 2px solid #242424;
-    font-weight: bold;
+  border: 2px solid #242424;
+  font-weight: bold;
 }
 
 .datosDirec input {
-    margin: 5px 0;
-    padding: 5px 15px;
-    border: 0;
-    border-radius: 20px;
-    width: 290px;
-    transition: border-color 0.3s;
-    cursor: pointer;
+  margin: 5px 0;
+  padding: 5px 15px;
+  border: 0;
+  border-radius: 20px;
+  width: 290px;
+  transition: border-color 0.3s;
+  cursor: pointer;
 }
 
 input[type="text"]:hover {
-    width: 305px;
+  width: 305px;
 }
-  
+
+.datosStyle label {
+  text-align: start;
+  padding: 5px 0px;
+}
 
 /*MEDIA QUERY-------------------------------------*/
 @media (max-width: 991px) {
-    .seccion-shipping {
-        width: 100%;
-    }
+  .seccion-shipping {
+    width: 100%;
+  }
 
-    .tipo-envio {
-        margin-top: 30px;
-    }
+  .tipo-envio {
+    margin-top: 30px;
+  }
 }
 
 @media (max-width: 768px) {
