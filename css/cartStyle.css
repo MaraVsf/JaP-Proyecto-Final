@@ -96,8 +96,8 @@ tr input {
   width: 60px;
 }
 
-button {
-  border-radius: 25px !important;
+#btn-realizar-compra {
+  border-radius: 25px;
   height: 50px;
 }
 
