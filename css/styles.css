@@ -5,12 +5,10 @@
   font-family: "Verdana", serif !important;
 }
 
- /* color del body */ 
+/* color del body */
 body {
   background-color: #d3d3d3;
 }
-
-
 
 /* Estilo del nav */
 
@@ -40,7 +38,7 @@ nav {
 
 /* Botón del menú */
 .dropbtn {
-  background-color:   rgb(65, 184, 207);
+  background-color: rgb(65, 184, 207);
   color: #025057;
   font-family: "Merriweather", serif;
   font-weight: 600;
@@ -95,7 +93,7 @@ nav {
 }
 
 .logo {
-  color: rgb(210,105,30);
+  color: rgb(210, 105, 30);
   font-size: 35px;
   font-weight: 400;
   font-family: "Lilita One", cursive;
@@ -111,7 +109,7 @@ nav {
 .menu li a {
   text-decoration: none;
   font-family: "Merriweather", serif;
-  color:  #021618;
+  color: #021618;
   font-weight: 600;
   font-size: 20px;
   transition: 0.3s;
@@ -651,7 +649,6 @@ footer p {
   .menuCel {
     display: block;
   }
- 
 }
 
 @media (max-width: 480px) {
@@ -672,13 +669,8 @@ footer p {
   }
   .carousel-item img {
     height: 40vh;
-   
   }
-
- 
 }
-
-
 
 @media (max-width: 768px) {
   .tarjetas {
@@ -702,12 +694,68 @@ footer p {
   #usernameSpan {
     display: none;
   }
-
 }
 
+.recommended-wrap {
+  display: flex;
+  align-items: start;
+  justify-content: center;
 
+  margin-top: 120px;
+  margin-bottom: 120px;
+  gap: 50px;
+}
 
+.recommendation_card {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
 
+  align-items: start;
+  justify-content: center;
+}
 
+.call_to_action-wrap {
+  display: flex;
+  align-items: start;
+  justify-content: center;
 
+  margin-bottom: 120px;
+}
 
+.call_to_action-wrap video {
+  height: 60vh;
+}
+
+.video_wrap {
+  width: 50%;
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cta_info-wrap {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 50vw;
+  height: 60vh;
+}
+
+.cta_info-wrap p {
+  max-width: 350px;
+  text-align: center;
+}
+
+.featured_products-wrap {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+  margin-bottom: 120px;
+  align-items: center;
+  justify-content: center;
+}
