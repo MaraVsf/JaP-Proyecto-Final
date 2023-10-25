@@ -723,12 +723,15 @@ footer p {
   margin-bottom: 120px;
 }
 
-.call_to_action-wrap video {
-  height: 60vh;
+.video_wrap iframe {
+  position: relative;
+
+  height: 150%;
 }
 
 .video_wrap {
-  width: 50%;
+  width: 50vw;
+  height: 60vh;
 
   overflow: hidden;
   box-sizing: border-box;
