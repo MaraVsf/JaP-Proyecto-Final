@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
       rel="stylesheet"
     />
-    <style>
+   <style>
       input:focus{
         outline: none;
       }
@@ -52,7 +52,7 @@
         font-weight: bold;
         font-size: 12px;
       }
-    </style>
+    </style> 
   </head>
 
   <body class="light">
@@ -307,7 +307,7 @@
             </div>
             <div class="datosDirec">
               <input type="text" placeholder="Esquina" id="esquina" required />
-              <span class="error">Debe ingresar el nombre de la esquina</span>
+              <span class="error">Repetir contraseña</span>
             </div>
           </div>
           <div class="col-4 tipo-envio seccion-shipping">
@@ -384,14 +384,15 @@
                 <div class="modal-body">
                   <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
-                      <input type="number" class="form-control" id="nDeCuenta" required>
+                        <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
+                        <input type="number" class="form-control" id="nDeTransf" minlength="10" required>
+                        <span class="error">Debe ingresar un minimo de 10 caracteres</span>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary" id="validacionCuenta">Guardar Datos</button>
+                  <button type="button" class="btn btn-primary" id="validacionTrasferencia">Guardar Datos</button>
                 </div>
               </div>
             </div>
