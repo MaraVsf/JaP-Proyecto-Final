@@ -185,17 +185,18 @@ function calcularTotal() {
 
   for (let i = 0; i < inputsRadios.length; i++) {
     if (inputsRadios[i].checked && i == 0) {
-      costoEnvio = 15;
+      porcentajeEnvio = 15;
     } else if (inputsRadios[i].checked && i == 1) {
-      costoEnvio = 7;
+      porcentajeEnvio = 7;
     } else if (inputsRadios[i].checked && i == 2) {
-      costoEnvio = 5;
+      porcentajeEnvio = 5;
     }
   }
 
   let total = document.getElementById("total");
+  let envio = parseInt(subtotal * (porcentajeEnvio / 100));
   total.innerHTML = `TOTAL: USD ${
-    subtotal + parseInt(subtotal * (costoEnvio / 100))
+    subtotal + envio
   }`;
 
   let subtotalp = document.getElementById("subtotal");
@@ -205,7 +206,7 @@ function calcularTotal() {
 
   let enviop = document.getElementById("envio");
   enviop.innerHTML = `<span id="totalp">Envío: USD ${
-    costoEnvio
+    envio
   }</span>`
 }
 
