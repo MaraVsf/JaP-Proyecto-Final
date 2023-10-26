@@ -236,7 +236,7 @@ let nDeCI = document.getElementById("nDeCI");
 //Validacion de tarjeta
 function validacionMetodoDePagoTar(){
  
-  if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar!==""){
+  if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar.value!==""){
    alert("Tarjeta ingresada con exito")
    /* nroTarjeta.value = "";
    segCod.value = "";
@@ -244,7 +244,7 @@ function validacionMetodoDePagoTar(){
    vtoTar.value = "";
     */
   }else{
-    alert("Ingrese todos los campos correctamente recuerde ingresar los 16 digitos de la tarjeta y que el codigo de seguridad contiene 3 numeros")
+    alert("Ingrese todos los campos correctamente: recuerde ingresar los 16 digitos de la tarjeta, el codigo de seguridad que contiene 3 numeros y la fecha de vencimiento")
    
   }
 }
