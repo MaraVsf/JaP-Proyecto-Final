@@ -27,6 +27,7 @@ fetch(carritoendpoint)
           <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
+        
       `;
 
       cartContainer.appendChild(tr);
@@ -100,39 +101,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// Borrar productos del carrito
-// cartProd.forEach((producto, index) => {
-//   let tr = document.createElement("tr");
-//   let cantidad = producto.count;
-//   let precio = producto.unitCost;
-//   let subtotalProducto = cantidad * precio;  
+//BORRAR DATOS DE LOCALSTORAGE DE CARRITO
 
-//   let botonBorrar = document.createElement("button");
-//   botonBorrar.textContent = "Borrar";
-//   botonBorrar.classList.add("borrar-producto");
-//   botonBorrar.dataset.index = index;
+function borrarElementosCarrito(idElemento){
+  let productos = JSON.parse(localStorage.getItem("allProducts"));
+  let indiceEliminar = productos.findIndex(objeto => objeto.id === idElemento);
 
-//   botonBorrar.addEventListener("click", function() {
-    
-//   let indiceBorrar = parseInt(this.dataset.index);
+  if (indiceEliminar !== -1){
+    productos.splice(indiceEliminar,1);
+    localStorage.setItem("allProducts", JSON.stringify(productos));
+    allProducts = allProducts.filter(objeto => objeto.id !== idElemento);
+    console.log(allProducts);
+    if (localStorage.getItem("prodID") == idElemento){
+      localStorage.setItem("prodID", 0);
+    }
+    location.reload();
+  } 
   
-//   // Eliminar el producto del carrito
-//   cartProd.splice(indiceBorrar, 1);
-//     })
-//     let tdBoton = document.createElement("td");
-//     let botonBorrar = document.createElement("button");
-//         botonBorrar.classList.add("btn", "btn-danger");
-//     let spanPapelera = document.createElement("span");
-//         spanPapelera.classList.add("bi", "bi-trash");
-
-// botonBorrar.appendChild(spanPapelera);
-// tdBoton.appendChild(botonBorrar);
-// tr.appendChild(tdBoton);
-// })
+}
 
 // Función para actualizar la tabla del carrito
 function updateCartTable() {
   const tbody = document.getElementById("cart-list");
+  console.log("test")
 
   // Limpiar el contenido existente de la tabla
   tbody.innerHTML = "";
@@ -146,6 +137,7 @@ function updateCartTable() {
       <td>${product.currency} ${product.cost}</td>
       <td><input type="number" class="cantProd" value="1" min="1" data-product-index="${index}" /></td>
       <td><span id="subProduct${index}">${product.currency}${product.subtotal}</span></td>
+      <td><span class="btnEliminar" id="${product.id}" onClick=" borrarElementosCarrito(${product.id})">X</span></td>
     `;
     tbody.appendChild(row);
   });
