@@ -2,6 +2,7 @@ let idusuario = 25801;
 let carritoendpoint = `https://japceibal.github.io/emercado-api/user_cart/${idusuario}.json`;
 
 fetch(carritoendpoint)
+  
   .then((response) => {
     if (!response.ok) {
       throw new Error("Error en la solicitud");
@@ -411,9 +412,6 @@ button.addEventListener("click", function() {
     cantProdInputs[i].value = "";
   }
 });
-
-
-
 
 
 
