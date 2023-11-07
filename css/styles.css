@@ -132,7 +132,7 @@ nav {
 .card-header {
   border-radius: 8px 8px 0 0;
   height: 200px;
-  overflow: hidden;
+/*   overflow: hidden; */
 }
 
 .card-body {
@@ -141,7 +141,7 @@ nav {
   display: flex;
   flex-direction: column;
   height: 200px; /* Asegura que la altura del cuerpo sea igual a la del encabezado */
-  overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado largo */
+ /*  overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado largo */ 
 }
 .jumbotron .display-4 {
   font-weight: bold;
@@ -161,18 +161,7 @@ nav {
     font-size: 3.5rem;
   }
 }
-/*.jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}*/
+
 
 ::-webkit-scrollbar {
   display: none;
@@ -192,16 +181,6 @@ nav {
   font-size: 50px;
 }
 
-/* .boton-categoria {
-  background-color:  #caf0f87c;
-  position: absolute;
-  bottom: 0;
-  margin-left: 30%;
-  padding-bottom: 70px;
-  padding-left: 10px;
-  padding-right: 10px;
-
-} */
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -778,3 +757,50 @@ footer p {
     width: 80vw;
   }
 }
+
+/* BARRA DE SCROLL */
+body::-webkit-scrollbar {
+  width: 7px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #03045e;
+}
+
+/* MARGENES Y ESTILO PARA EL TITULO DE CATEGORIAS */
+#tituloCategorias {
+  margin-top: 50px;
+}
+
+#tituloCategorias h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+#tituloCategorias p {
+ font-weight: 400;
+ font-size: 25px;
+}
+
+/* MARGENES Y ESTILO DEL TITULO DE PRODUCTS */
+#tituloProducto {
+  margin-top: 50px;
+}
+
+#tituloProducto h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#tituloProducto  p {
+  font-weight: 400;
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* MARGEN TOP PARA EL CONTENIDO DE LA PAGINA INFOPRODUCTS */
+#mainInfo {
+  margin-top: 50px;
+}
+
+

@@ -8,9 +8,11 @@ document.getElementById("loginForm").addEventListener("submit",(e)=>{
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("username",username);
         location.href="index.html";
-    }else{alert("Usuario invalido");
+    }else{alert("Usuario invalido, ingresa una contaseña con 6 o más caracteres.");
     }
 });
+
+
 
 // document.getElementById("loginButton").addEventListener("click", function() {
 //     // Obtén el valor del campo de contraseña

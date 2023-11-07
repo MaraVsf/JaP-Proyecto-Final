@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.classList.add("vh-100");
       });
     }
+    
   }
 
   // Agregar un controlador de evento de redimensionamiento
@@ -83,6 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Llamar a la función al cargar la página
   adjustVhClass();
+
+   
+
 });
 
 // Obtén todos los elementos con la clase "light" y "light2"
@@ -129,3 +133,4 @@ itemsCarrusel.addEventListener("click", () => {
   window.location = "categories.html";
   console.log("click");
 });
+
