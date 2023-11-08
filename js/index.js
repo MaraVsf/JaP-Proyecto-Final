@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const logout = document.getElementById("logout");
   logout.addEventListener("click", () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
+    localStorage.clear();
     localStorage.setItem("loggedIn", "false");
     location.href = "login.html";
   });
