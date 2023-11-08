@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Llamar a la función al cargar la página
   adjustVhClass();
 
-   
-
 });
 
 // Obtén todos los elementos con la clase "light" y "light2"

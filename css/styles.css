@@ -11,7 +11,6 @@ body {
 }
 
 /* Estilo del nav */
-
 /* Nav */
 
 nav {
@@ -132,7 +131,6 @@ nav {
 .card-header {
   border-radius: 8px 8px 0 0;
   height: 200px;
-/*   overflow: hidden; */
 }
 
 .card-body {
@@ -160,11 +158,6 @@ nav {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
-
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 .texto-descripcion a {

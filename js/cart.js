@@ -231,11 +231,7 @@ function validacionMetodoDePagoTar(){
  
   if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar.value!==""){
    alert("Tarjeta ingresada con exito")
-   /* nroTarjeta.value = "";
-   segCod.value = "";
-   titularName.value = "";
-   vtoTar.value = "";
-    */
+   
   }else{
     alert("Ingrese todos los campos correctamente: recuerde ingresar los 16 digitos de la tarjeta, el codigo de seguridad que contiene 3 numeros y la fecha de vencimiento")
    

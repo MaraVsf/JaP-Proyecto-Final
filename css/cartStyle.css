@@ -4,7 +4,7 @@
   font-weight: 700;
 }
 
-/* TABLA -----------------------------------------------------*/
+/* TABLA */
 .table {
   width: 100%;
   overflow-x: auto;
@@ -66,7 +66,6 @@ tr input {
 }
 
 /*Total*/
-
 #total-realizar-compra {
   margin-top: 50px;
 }
@@ -102,7 +101,7 @@ tr input {
   height: 50px;
 }
 
-/*Shipping seccion metodos-------------------*/
+/*Shipping seccion metodos*/
 #cart-shiping {
   display: flex;
   background-color: #f1f1f17c;
@@ -170,7 +169,7 @@ input[type="text"]:hover {
   padding: 5px 0px;
 }
 
-/*MEDIA QUERY-------------------------------------*/
+/*MEDIA QUERY*/
 @media (max-width: 991px) {
   .seccion-shipping {
     width: 100%;
