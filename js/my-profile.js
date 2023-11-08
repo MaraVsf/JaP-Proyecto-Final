@@ -16,23 +16,25 @@ botonGuardar.addEventListener("click", () => {
   let inputEmail = document.querySelector("#email").value;
   let inputTelefono = document.querySelector("#telefono").value;
 
-  if (inputNombre != "") {
-    localStorage.setItem("nombre", inputNombre);
-  }
-  if (inputSegNombre != "") {
-    localStorage.setItem("segNombre", inputSegNombre);
-  }
-  if (inputApellido != "") {
-    localStorage.setItem("apellido", inputApellido);
-  }
-  if (inputSegApellido != "") {
-    localStorage.setItem("segApellido", inputSegApellido);
-  }
-  if (inputEmail != "") {
-    localStorage.setItem("email", inputEmail);
-  }
-  if (inputTelefono != "") {
-    localStorage.setItem("telefono", inputTelefono);
+  if (inputNombre != "" && inputApellido != "" && inputEmail != "") {
+    if (inputNombre != "") {
+      localStorage.setItem("nombre", inputNombre);
+    }
+    if (inputSegNombre != "") {
+      localStorage.setItem("segNombre", inputSegNombre);
+    }
+    if (inputApellido != "") {
+      localStorage.setItem("apellido", inputApellido);
+    }
+    if (inputSegApellido != "") {
+      localStorage.setItem("segApellido", inputSegApellido);
+    }
+    if (inputEmail != "") {
+      localStorage.setItem("email", inputEmail);
+    }
+    if (inputTelefono != "") {
+      localStorage.setItem("telefono", inputTelefono);
+    }
   }
 
   loadData();
