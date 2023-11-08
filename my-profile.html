@@ -249,7 +249,9 @@
           class="dropbtn"
           id="logoutDropdown"
           style="border-color: #53c0fb"
-        ></button>
+        >
+          <span id="usernameSpan"></span>
+        </button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
           <li class="menuCel"><a href="categories.html">Categorías</a></li>
@@ -284,7 +286,7 @@
                 <input
                   type="text"
                   class="form-control bg-light"
-                  id="segnombre"
+                  id="segNombre"
                 />
               </div>
             </div>
@@ -308,7 +310,7 @@
                 <input
                   type="text"
                   class="form-control bg-light"
-                  id="segapellido"
+                  id="segApellido"
                   value=""
                 />
               </div>
@@ -333,14 +335,14 @@
                 <input
                   type="text"
                   class="form-control bg-light"
-                  id="telcontacto"
+                  id="telefono"
                   value=""
                 />
               </div>
             </div>
           </div>
           <div class="col-12 mt-3">
-            <button class="btn btn-primary" type="submit">
+            <button id="guardarPerfil" class="btn btn-primary" type="submit">
               Guardar cambios
             </button>
           </div>
