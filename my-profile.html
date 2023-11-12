@@ -269,14 +269,24 @@
         <form class="needs-validation" novalidate>
           <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="imagenPerfil">Imagen de Perfil:</label>
-                    <img src="data:image/png;base64,{{localStorage.getItem('profileImage)}}" alt="Profile Image">
-                    <input type="file" class="form-control" id="imagenPerfil" accept="image/*">
-                </div>
-                <p id="condPerfil">Tamaño maximo 5mb</p>
+              <div class="form-group">
+                <label for="imagenPerfil">Imagen de Perfil:</label>
+                <img
+                  class="rounded img-fluid w-25"
+                  src=""
+                  alt="Profile Image"
+                  id="profileImage"
+                />
+                <input
+                  type="file"
+                  class="form-control"
+                  id="imagenPerfil"
+                  accept="image/*"
+                />
+              </div>
+              <p id="condPerfil">Tamaño maximo 5mb</p>
             </div>
-        </div>
+          </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -341,7 +351,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="telcontacto">Teléfono de Contacto:</label>
+                <label for="telefono">Teléfono de Contacto:</label>
                 <input
                   type="text"
                   class="form-control bg-light"
