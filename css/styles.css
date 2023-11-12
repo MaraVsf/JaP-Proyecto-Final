@@ -811,4 +811,7 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 50px;
 }
 
-
+#condPerfil{
+  font-size: small;
+  color: gray;
+}
