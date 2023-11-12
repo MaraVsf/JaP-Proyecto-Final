@@ -35,12 +35,11 @@ if (localStorage.getItem("profileImage")) {
   imagenuser.src = localStorage.getItem("profileImage");
 } else {
   imagenuser.src = "img/img_perfil.png";
-  imagenuser.style.marginTop = "5px";
 }
 localStorage.getItem("profileImage");
 imagenuser.style.width = "25px";
+imagenuser.style.margin = "5px";
 imagenuser.style.borderRadius = "50%";
-imagenuser.style.marginLeft = "15px";
-botonuser.appendChild(imagenuser);
 
+botonuser.appendChild(imagenuser);
 usernameSpan.textContent = username;

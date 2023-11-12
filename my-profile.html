@@ -245,10 +245,7 @@
       </div>
 
       <div class="dropdown">
-        <button
-          class="dropbtn"
-          id="logoutDropdown"
-        >
+        <button class="dropbtn" id="logoutDropdown">
           <span id="usernameSpan"></span>
         </button>
         <ul class="dropdown-content">
@@ -265,30 +262,18 @@
     </nav>
     <main>
       <div class="container">
-        <form class="needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="imagenPerfil">Imagen de Perfil:</label>
-                <img
-                  class="rounded img-fluid w-25"
-                  src=""
-                  alt="Profile Image"
-                  id="profileImage"
-                />
-                <input
-                  type="file"
-                  class="form-control"
-                  id="imagenPerfil"
-                  accept="image/*"
-                />
-              </div>
-              <p id="condPerfil">Tamaño maximo 5mb</p>
-            </div>
+        <div class="row">
+          <div class="col-md-6 mt-5">
+            <h2>Mi perfil</h2>
           </div>
+          <div class="col-md-6 mt-5">
+            
+          <div id="profileImage"></div>
+        </div>
+        <form class="needs-validation mt-5" novalidate>
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="nombre">*Nombre:</label>
                 <input
                   type="text"
@@ -300,7 +285,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="segnombre">Segundo Nombre:</label>
                 <input
                   type="text"
@@ -312,7 +297,7 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="apellido">*Apellido:</label>
                 <input
                   type="text"
@@ -324,7 +309,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="segapellido">Segundo Apellido:</label>
                 <input
                   type="text"
@@ -337,7 +322,7 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="email">*Email:</label>
                 <input
                   type="text"
@@ -349,15 +334,29 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <label for="telefono">Teléfono de Contacto:</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control bg-light"
                   id="telefono"
                   value=""
                 />
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mt-3">
+                <label for="imagenPerfil">Imagen de Perfil:</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="imagenPerfil"
+                  accept="image/*"
+                />
+              </div>
+              <p id="condPerfil">Tamaño maximo 5mb</p>
             </div>
           </div>
           <div class="col-12 mt-3">
@@ -374,7 +373,7 @@
     <footer>
       <div class="row" id="infEnd">
         <div class="col-4 mt-4 text-center">
-          <img src="img/img-iconos/jap-logo.png" alt="" width="280px">
+          <img src="img/img-iconos/jap-logo.png" alt="" width="280px" />
         </div>
         <div class="col-4">
           <h4>EMPRESA</h4>
