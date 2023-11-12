@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function loadData() {
   const localStorageItems = [
-    "nombre",
+    "username",
     "segNombre",
     "apellido",
     "segApellido",
