@@ -30,8 +30,17 @@ const usernameSpan = document.getElementById("usernameSpan");
 
 let username = localStorage.getItem("username");
 let imagenuser = document.createElement("img");
-imagenuser.src = "img/img-iconos/logoPerfil.png";
-imagenuser.style.width = "30px";
+
+if (localStorage.getItem("profileImage")) {
+  imagenuser.src = localStorage.getItem("profileImage");
+} else {
+  imagenuser.src = "img/img_perfil.png";
+  imagenuser.style.marginTop = "5px";
+}
+localStorage.getItem("profileImage");
+imagenuser.style.width = "25px";
+imagenuser.style.borderRadius = "50%";
+imagenuser.style.marginLeft = "15px";
 botonuser.appendChild(imagenuser);
 
 usernameSpan.textContent = username;
