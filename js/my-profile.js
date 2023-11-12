@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("email").value = localStorage.getItem("email");
-  document.querySelector("#profileImage").src =
-    localStorage.getItem("profileImage");
-
+  loadProfileImage();
   loadData();
 });
 
@@ -88,3 +86,20 @@ document
 
     reader.readAsDataURL(file);
   });
+
+// Imagen de perfil
+function loadProfileImage() {
+  const profileImg = document.getElementById("profileImage");
+  let imagenMain = document.createElement("img");
+
+  if (localStorage.getItem("profileImage")) {
+    imagenMain.src = localStorage.getItem("profileImage");
+  } else {
+    imagenMain.src = "img/img_perfil.png";
+  }
+
+  imagenMain.className = "rounded img-fluid w-25";
+  imagenMain.alt = "Profile Image";
+
+  profileImg.appendChild(imagenMain);
+}

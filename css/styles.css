@@ -135,7 +135,7 @@ nav {
   display: flex;
   flex-direction: column;
   height: 200px; /* Asegura que la altura del cuerpo sea igual a la del encabezado */
- /*  overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado largo */ 
+  /*  overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado largo */
 }
 .jumbotron .display-4 {
   font-weight: bold;
@@ -169,7 +169,6 @@ nav {
   font-family: "Courier New", Courier, monospace;
   font-size: 50px;
 }
-
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -662,7 +661,7 @@ footer p {
     text-align: center;
   }
 
-  footer .col-4{
+  footer .col-4 {
     width: 100%;
   }
 
@@ -768,8 +767,6 @@ footer p {
   .cta_info-wrap {
     width: 80vw;
   }
-
-
 }
 
 /* BARRA DE SCROLL */
@@ -778,22 +775,21 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background:  rgba(219, 197, 166, 0.5);
-/*   border-radius: 100vw; */
-/*   margin-block: .5em;
+  background: rgba(219, 197, 166, 0.5);
+  /*   border-radius: 100vw; */
+  /*   margin-block: .5em;
   */
 }
 
 body::-webkit-scrollbar-thumb {
-  background:  rgba(138, 76, 10, 0.5);
+  background: rgba(138, 76, 10, 0.5);
   border-radius: 100vw;
-  border: .25em  solid rgba(219, 187, 166, 0.5);
+  border: 0.25em solid rgba(219, 187, 166, 0.5);
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background:  rgba(173, 95, 18, 0.5);
+  background: rgba(173, 95, 18, 0.5);
 }
-
 
 /* MARGENES Y ESTILO PARA EL TITULO DE CATEGORIAS */
 #tituloCategorias {
@@ -806,8 +802,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #tituloCategorias p {
- font-weight: 400;
- font-size: 25px;
+  font-weight: 400;
+  font-size: 25px;
 }
 
 /* MARGENES Y ESTILO DEL TITULO DE PRODUCTS */
@@ -818,20 +814,19 @@ body::-webkit-scrollbar-thumb:hover {
 #tituloProducto h2 {
   font-size: 35px;
   margin-bottom: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#tituloProducto  p {
+#tituloProducto p {
   font-weight: 400;
   font-size: 25px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* MARGEN TOP PARA EL CONTENIDO DE LA PAGINA INFOPRODUCTS */
 #mainInfo {
   margin-top: 50px;
 }
-
 
 .subtitulo {
   font-weight: lighter !important;
@@ -845,7 +840,7 @@ body::-webkit-scrollbar-thumb:hover {
 /*-------FOOTER----------*/
 footer {
   background-color: #021018;
-  color:#cacaca;
+  color: #cacaca;
 }
 
 footer ul {
@@ -856,7 +851,7 @@ footer ul {
 
 footer h4 {
   font-weight: bold;
-  color: #eba14b;  
+  color: #eba14b;
 }
 
 .volverArriba {
@@ -865,7 +860,7 @@ footer h4 {
   margin-bottom: 20px;
 }
 
-#condPerfil{
+#condPerfil {
   font-size: small;
   color: gray;
 }
