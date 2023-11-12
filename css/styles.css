@@ -7,7 +7,7 @@
 
 /* color del body */
 body {
-  background-color: #d3d3d3;
+  background-color: #fbfbfb;
 }
 
 /* Estilo del nav */
@@ -21,7 +21,7 @@ nav {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
-  background-color: rgba(11, 153, 182, 0.5);
+  background-color: #000000e1;
   box-shadow: 0px 1px 10px black;
   height: 70px;
   min-width: 100%;
@@ -37,17 +37,14 @@ nav {
 
 /* Botón del menú */
 .dropbtn {
-  background-color: rgb(65, 184, 207);
-  color: #025057;
-  font-family: "Merriweather", serif;
-  font-weight: 600;
+  background-color: #000000e1;
+  color: #c9c9c9;
+  font-weight: 200;
   font-size: 20px;
   border: "none";
   border-radius: 8px;
   cursor: pointer;
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
 }
 
 /* Nombre del usuario */
@@ -60,8 +57,9 @@ nav {
   display: none;
   flex-direction: column;
   position: absolute;
+  margin-top: 15px;
   right: 5px;
-  background-color: #53c0fb;
+  background-color: #000000e1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 2;
@@ -77,9 +75,8 @@ nav {
 
 .dropdown-content a {
   text-decoration: none;
-  font-family: "Merriweather", serif;
-  color: #006d77;
-  font-weight: 600;
+  color: #c5c5c5;
+  font-weight: 200;
   font-size: 20px;
   transition: 0.3s;
 }
@@ -107,9 +104,8 @@ nav {
 
 .menu li a {
   text-decoration: none;
-  font-family: "Merriweather", serif;
-  color: #021618;
-  font-weight: 600;
+  color: #d0d0d0;
+  font-weight: 200;
   font-size: 20px;
   transition: 0.3s;
 }
@@ -308,6 +304,8 @@ a.custom-card:hover {
 }
 .desCar {
   font-size: 92%;
+  font-weight: lighter;
+  color: #7f7f7f;
 }
 
 .priceCar {
@@ -439,16 +437,17 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
-
   width: fit-content;
   gap: 4px;
+  background-color: white;
   border-radius: 6px;
   border: solid rgba(153, 169, 171, 0.25) 2px;
 }
 
 #search {
   width: fit-content;
-  border: none;
+  border: 0;
+  padding-left: 10px;
 }
 
 #search-button img {
@@ -458,7 +457,6 @@ main {
 
 #search-button {
   background-color: white;
-  border-left: solid rgba(153, 169, 171, 0.25) 2px;
 
   border-radius: 0px 4px 4px 0px;
   padding: 4px 5px 4px 4px;
@@ -660,7 +658,12 @@ footer p {
   #infEnd {
     display: flex;
     flex-direction: column-reverse;
-    text-align: start;
+    align-content: center;
+    text-align: center;
+  }
+
+  footer .col-4{
+    width: 100%;
   }
 
   #usernameSpan {
@@ -674,6 +677,7 @@ footer p {
   justify-content: center;
   margin-top: 120px;
   margin-bottom: 120px;
+  font-weight: 100;
 }
 
 .recommendation_card {
@@ -720,6 +724,21 @@ footer p {
 .cta_info-wrap p {
   max-width: 350px;
   text-align: center;
+  font-weight: 100;
+}
+
+.fondoObscuro {
+  background-color: #020c18;
+  color: white;
+}
+
+#btnVerCatalogo {
+  margin-top: 20px;
+  padding: 8px 25px;
+  border-radius: 7px;
+  background-color: rgb(208, 113, 3);
+  color: white;
+  font-weight: bold;
 }
 
 .featured_products-wrap {
@@ -749,6 +768,8 @@ footer p {
   .cta_info-wrap {
     width: 80vw;
   }
+
+
 }
 
 /* BARRA DE SCROLL */
@@ -757,20 +778,20 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background:  rgba(166, 210, 219, 0.5);
+  background:  rgba(219, 197, 166, 0.5);
 /*   border-radius: 100vw; */
 /*   margin-block: .5em;
   */
 }
 
 body::-webkit-scrollbar-thumb {
-  background:  rgba(10, 116, 138, 0.5);
+  background:  rgba(138, 76, 10, 0.5);
   border-radius: 100vw;
-  border: .25em  solid rgba(166, 210, 219, 0.5);
+  border: .25em  solid rgba(219, 187, 166, 0.5);
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background:  rgba(18, 148, 173, 0.5);
+  background:  rgba(173, 95, 18, 0.5);
 }
 
 
@@ -811,4 +832,34 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 50px;
 }
 
+.subtitulo {
+  font-weight: lighter !important;
+  font-size: large !important;
+}
 
+.letraFina {
+  font-weight: lighter !important;
+}
+
+/*-------FOOTER----------*/
+footer {
+  background-color: #021018;
+  color:#cacaca;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  font-weight: 100;
+}
+
+footer h4 {
+  font-weight: bold;
+  color: #eba14b;  
+}
+
+.volverArriba {
+  text-align: end;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}

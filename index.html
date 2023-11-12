@@ -241,9 +241,9 @@
         <button
           class="dropbtn"
           id="logoutDropdown"
-          style="border-color: #53c0fb"
         >
-          <span id="usernameSpan"></span>
+        <span id="usernameSpan"></span>
+        
         </button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
@@ -402,13 +402,13 @@
           </div>
           <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
-        <div class="cta_info-wrap bg-gradient">
+        <div class="cta_info-wrap bg-gradient fondoObscuro">
           <h3>Todo lo que necesites</h3>
           <p>
             Emercado se enfoca en dar todo lo que nuestros clientes necesiten,
             todo desde la comodidad de tu casa.
           </p>
-          <button class="btn-success">Ver Catalogo</button>
+          <button id="btnVerCatalogo">VER CATÁLOGO</button>
         </div>
       </div>
       <div class="featured_products-wrap">
@@ -425,7 +425,7 @@
                 class="card-img-top"
                 alt="Mesa de centro"
               />
-              <div class="card-body" style="background-color: #f2f2f2">
+              <div class="card-body">
                 <p class="card-text"></p>
                 <p class="nameCar">Mesa de centro</p>
                 <p class="desCar">
@@ -454,7 +454,7 @@
                 class="card-img-top"
                 alt="Oso de peluche"
               />
-              <div class="card-body" style="background-color: #f2f2f2">
+              <div class="card-body">
                 <p class="card-text"></p>
                 <p class="nameCar">Oso de peluche</p>
                 <p class="desCar">
@@ -483,7 +483,7 @@
                 class="card-img-top"
                 alt="Juego de comedor"
               />
-              <div class="card-body" style="background-color: #f2f2f2">
+              <div class="card-body">
                 <p class="card-text"></p>
                 <p class="nameCar">Juego de comedor</p>
                 <p class="desCar">
@@ -512,7 +512,7 @@
                 class="card-img-top"
                 alt="Suzuki Celerio"
               />
-              <div class="card-body" style="background-color: #f2f2f2">
+              <div class="card-body">
                 <p class="card-text"></p>
                 <p class="nameCar">Suzuki Celerio</p>
                 <p class="desCar">
@@ -532,12 +532,35 @@
         </div>
       </div>
     </main>
-    <footer class="text-muted">
-      <div class="container" id="infEnd">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
+    <div class="volverArriba">
+      <a href="#">Volver arriba</a>
+    </div>
+    <footer>
+      <div class="row" id="infEnd">
+        <div class="col-4 mt-4 text-center">
+          <img src="img/img-iconos/jap-logo.png" alt="" width="280px">
+        </div>
+        <div class="col-4">
+          <h4>EMPRESA</h4>
+          <ul>
+            <li>Nosotros</li>
+            <li>Términos y condiciones</li>
+            <li>Políticas de Envíos y devoluciones</li>
+            <li>Política de privacidad</li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <h4>CONTACTO</h4>
+          <ul>
+            <li>Celular: +598 91 234 567</li>
+            <li>Email: contacto@jap.uy</li>
+          </ul>
+          <h4>REDES SOCIALES</h4>
+          <ul>
+            <li>Instagram Facebook Twitter</li>
+          </ul>
+        </div>
+        <p class="text-center text-muted mt-2">
           Este sitio forma parte de
           <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
             >Jovenes a Programar</a
