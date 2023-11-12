@@ -268,12 +268,22 @@
         <form class="needs-validation" novalidate>
           <div class="row">
             <div class="col-md-6">
+                <div class="form-group">
+                    <label for="imagenPerfil">Imagen de Perfil:</label>
+                    <img src="data:image/png;base64,{{localStorage.getItem('profileImage)}}" alt="Profile Image">
+                    <input type="file" class="form-control" id="imagenPerfil" accept="image/*">
+                </div>
+                <p id="condPerfil">Tamaño maximo 5mb</p>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="nombre">*Nombre:</label>
                 <input
                   type="text"
                   class="form-control bg-light"
-                  id="nombre"
+                  id="username"
                   required
                 />
                 <div class="invalid-feedback">Agregue su nombre.</div>
