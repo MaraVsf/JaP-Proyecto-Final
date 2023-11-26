@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-const key = "clave";
+const claveSecreta = "claveUltraSecreta";
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -37,31 +37,77 @@ app.get("/products_comments/:prodId", (req, res) => {
   );
 });
 
-//Obtiene el producto para cargar al carrito
+// Ruta para manejar la funcionalidad del carrito (GET)
 app.get("/cart", (req, res) => {
-  const fileName = "/jsons/user_cart/25801.json";
-  res.sendFile(__dirname + fileName);
-});
+  const fileName = path.join(__dirname, "/jsons/user_cart/25801.json");
 
-//metodo post que recibe los datos del body de postman, crea un archivo json ("user-purchase") y coloca dichos datos
-app.post("/cart", (req, res) => {
-  let data = JSON.stringify(req.body);
-  fs.writeFile("user-Purchase.json", data, function (err) {
+  fs.readFile(fileName, "utf8", (err, data) => {
     if (err) {
-      return console.log(err);
+      console.error(err);
+      res.status(500).send("Error al leer el carrito.");
+      return;
     }
-    res.send("El archivo se guardo con exito!");
+
+    const cartData = JSON.parse(data);
+    res.json(cartData);
   });
 });
 
-app.use(express.json());
+// Ruta para manejar la funcionalidad del carrito (POST)
+app.post("/cart", (req, res) => {
+  const fileName = path.join(__dirname, "/jsons/user_cart/25801.json");
+  const cartItems = req.body.items;
+
+  fs.writeFile(fileName, JSON.stringify({ items: cartItems }), (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error al guardar el carrito.");
+      return;
+    }
+
+    res.send("Carrito recibido y guardado con éxito.");
+  });
+});
+
+//LOGIN USUARIO
 
 // Endpoint para autenticar al usuario y generar el token JWT
 let usuarios = [
   { id: 1, username: "admin", email: "admin@admin", password: "admin" },
 ];
 
-//LOGIN USUARIO
+// Middleware para verificar y validar el token
+const authorizeMiddleware = (req, res, next) => {
+  // Obtén el token del encabezado de la solicitud
+  const token = req.header("Authorization");
+
+  // Verifica si el token está presente
+  if (!token) {
+    return res
+      .status(401)
+      .json({ message: "Acceso no autorizado. Token no proporcionado." });
+  }
+
+  try {
+    // Verifica y decodifica el token
+    const decoded = jwt.verify(token, claveSecreta); // Reemplaza 'claveSecreta' con tu clave secreta
+
+    // Agrega la información del usuario decodificado al objeto de solicitud para su uso posterior
+    req.user = decoded;
+
+    // Continúa con la siguiente función en la cadena de middleware
+    next();
+  } catch (error) {
+    // Maneja errores relacionados con el token (token inválido, expirado, etc.)
+    return res
+      .status(401)
+      .json({ message: "Acceso no autorizado. Token inválido." });
+  }
+};
+
+app.use(express.json());
+
+// Generando o validad usuario
 app.post("/login", (req, res) => {
   const { username, email, password } = req.body;
 
@@ -81,18 +127,6 @@ app.post("/login", (req, res) => {
       res.status(401).json({ message: "Credenciales inválidas" });
       return; // Termina la ejecución si las credenciales no son válidas
     }
-
-    // Payload del token
-    const payload = {
-      username: username,
-      // Puedes agregar más información al token si lo necesitas
-    };
-
-    // Generar el token JWT con una firma secreta (clave secreta)
-    const token = jwt.sign(payload, "claveSecreta", { expiresIn: "1h" }); // Puedes ajustar el tiempo de expiración
-
-    // Enviar el token como respuesta al cliente
-    res.json({ token });
   } else {
     // Crear un nuevo usuario si no existe
     const nuevoUsuario = {
@@ -103,17 +137,25 @@ app.post("/login", (req, res) => {
     };
 
     usuarios.push(nuevoUsuario);
-
-    // Payload del token para el nuevo usuario
-    const payload = {
-      username: username,
-      // Puedes agregar más información al token si lo necesitas
-    };
-
-    // Generar el token JWT con una firma secreta (clave secreta)
-    const token = jwt.sign(payload, "claveSecreta", { expiresIn: "1h" }); // Puedes ajustar el tiempo de expiración
-
-    // Enviar el token como respuesta al cliente
-    res.json({ token });
   }
+
+  // Payload del token para el usuario
+  const payload = {
+    username: username,
+  };
+
+  // Generar el token JWT con una firma secreta (clave secreta)
+  const token = jwt.sign(payload, claveSecreta, { expiresIn: "1h" }); // Puedes ajustar el tiempo de expiración
+
+  // Enviar el token como respuesta al cliente
+  res.json({ token });
+});
+
+// Middleware de autorización para la ruta /cart
+app.use("/cart", authorizeMiddleware);
+
+// Ruta /cart
+app.get("/cart", (req, res) => {
+  // Solo llegará aquí si el middleware de autorización permite el acceso
+  res.json({ message: "Acceso permitido a /cart" });
 });
